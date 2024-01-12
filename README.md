@@ -2,4 +2,4 @@
 
 startup project
 
-git pull
+[notes](/notes.md)
