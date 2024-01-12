@@ -1,2 +1,2 @@
-# beast-startup
+# startup
 startup project
