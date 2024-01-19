@@ -8,8 +8,8 @@ Because achieving greatness is not a solo mission – it's a shared expedition. 
 
 ## Design
 
-! [Mock of login and goal page.](IMG_0265.jpg)
-! [feed mockup.](IMG_0266.jpg)
+![Mock of login and goal page.](IMG_0265.jpg)
+![feed mockup.](IMG_0266.jpg)
 
 ## Key Features
 
