@@ -9,7 +9,7 @@ Because achieving greatness is not a solo mission – it's a shared expedition. 
 ## Design
 
 ! [Mock of login](/IMG_0265.jpg)
-! [Mock of feed] (/IMG_0266.jpg)
+! [feed](/IMG_0266.jpg)
 
 ## Key Features
 
