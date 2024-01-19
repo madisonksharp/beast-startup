@@ -1,5 +1,3 @@
-# startup
-
 # Buddy System
 
 ## Elevator Pitch
