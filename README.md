@@ -36,6 +36,25 @@ I will use these technologies in these ways:
 - **WebSocket** - as progress toward a goal is made, their streak and progress will be broadcast to the user's friends
 - **React** - Application will use next.js as the web server with react for HTML CSS and JS
 
+## HTML Startup Deliverable
+
+- **Index.html page**
+  - added username and password boxes
+  - added a create account button
+  - header 2 is now the BuddySystem catchphrase thing
+  - links to all pages in application in navbar
+- **Feed.html page**
+  - Username is the placeholder for the users username. the page will be customized for user " Username's feed"
+  - Placeholders for all user's buddies' activities via websocket
+  - placeholder for motivational quotes about habits pulled from API
+  - Comment for button to celebrate buddies habit streaks
+- **Goals.html page**
+  - placeholder for goals stored in a database
+  - placeholder for buddies who are working with you on that goal will be stored with database
+  - placeholder for number of days in habit streak stored in database
+- **profile.html page**
+  - placeholder for Avatar, username, name,and list of buddies stored in database
+
 ### Notes
 
 [notes](/notes.md)
