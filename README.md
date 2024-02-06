@@ -67,7 +67,7 @@ I guess this is what the assignment should look like. but below this is more des
   - placeholder for number of days in habit streak stored in database
 - **profile.html page**
   - new image
-  - placeholder for Avatar, username, name,and list of buddies stored in database
+  - placeholder for Avatar, username, name, and list of buddies stored in database
 
 ### Notes
 
