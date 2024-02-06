@@ -10,13 +10,10 @@
 </head>
 
 <body>
-  <!-- Use header, main, and footer elements to give semantic structure -->
   <header>
-    <h1>BuddySystem</h1>
-
-    <!-- Navigation elements -->
+    <h1>BuddySystem Login</h1>
+    <!--Navigation-->
     <nav>
-      <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
       <menu>
         <li><a href="index.html">Home</a></li>
         <li><a href="/user/feed.html">Feed</a></li>
@@ -25,7 +22,6 @@
       </menu>
     </nav>
 
-    <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
     <hr />
   </header>
 
@@ -35,6 +31,8 @@
     <form method="get" action="/user/feed.html">
       <label for="username">Username</label>
       <input type="text" id="username" placeholder="Your username here" />
+      <label for="password">password</label>
+      <input type="text" id="password" placeholder="Your password here" />
       <!-- Password text box -->
       <button type="submit">Login</button>
       <button type="submit">Create Account</button>
