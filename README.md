@@ -38,21 +38,35 @@ I will use these technologies in these ways:
 
 ## HTML Startup Deliverable
 
+I guess this is what the assignment should look like. but below this is more description of the changes I made by page.
+
+- **HTML pages** - 4 HTML pages: Index, feed, goals, and profile
+- **Links** - all pages link to each other so user can navigate through the pages easily
+- **Text** - there is placeholder text in several spots
+- **Images** - new images on feed, goals, and profile pages
+- **DB/Login** - input boxes for username and password. placeholder for goals and buddies that will be in database.
+- **WebSocket** - all users buddies' activities broadcast on the feed page via websocket.
+
+### more descriptive HTML Startup deliverable by HTML page
+
 - **Index.html page**
   - added username and password boxes
   - added a create account button
   - header 2 is now the BuddySystem catchphrase thing
   - links to all pages in application in navbar
 - **Feed.html page**
+  - new image
   - Username is the placeholder for the users username. the page will be customized for user " Username's feed"
   - Placeholders for all user's buddies' activities via websocket
   - placeholder for motivational quotes about habits pulled from API
   - Comment for button to celebrate buddies habit streaks
 - **Goals.html page**
-  - placeholder for goals stored in a database
+  - new image
+  - placeholder for goals stored in database
   - placeholder for buddies who are working with you on that goal will be stored with database
   - placeholder for number of days in habit streak stored in database
 - **profile.html page**
+  - new image
   - placeholder for Avatar, username, name,and list of buddies stored in database
 
 ### Notes
