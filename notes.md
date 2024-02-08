@@ -1,5 +1,16 @@
 <!-- Markup in .md file -->
 
+<!-- functions in madison > .zshrc
+connect2buddy() {
+  ssh -i ~/Downloads/madskey.pem ubuntu@buddysystem.click
+}
+
+my-deploy(){
+  ./deployFiles.sh -k ~/Downloads/madskey.pem -h buddysystem.click -s $1
+}
+
+-->
+
 <!-- Headings-->
 
 1 - 6 # before the heading text for the heading. the number of # is the level
