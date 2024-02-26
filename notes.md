@@ -412,7 +412,7 @@ display: flex;
 - Bootstrap
   - reference the url
 
-## JavaScript
+# JavaScript
 
 Javascript Intro
 JavaScript is a weakly typed language based on concepts in C, Java and Scheme.
@@ -421,7 +421,7 @@ JavaScript is a weakly typed language based on concepts in C, Java and Scheme.
 - Makes it very portable'
 - But allows for many errors
 
-# Getting Started
+## Getting Started
 
 - Console.log('Hello' + ' ' + 'world');
   - Console.log is the runtime built in function to output the string into the debugger console
@@ -433,7 +433,7 @@ JavaScript is a weakly typed language based on concepts in C, Java and Scheme.
   - // line comment
   - /_ block comment _/
 
-# JavaScript Console
+## JavaScript Console
 
 - JS console object provides interaction with JS runtimes debugger console
 
@@ -452,7 +452,7 @@ JavaScript is a weakly typed language based on concepts in C, Java and Scheme.
   ○ See how many times a block of code is called use count fucntion
   § Console.count('a');
 
-# Adding JavaScript to HTML
+## Adding JavaScript to HTML
 
 - Insert either by putting directly into HTML within a <script> element or using src attribute to reference external JS file
 
@@ -514,7 +514,7 @@ JavaScript type and construct
   - Switch
   - Break and continue
 
-# JavaScript String
+## JavaScript String
 
 - Strings are specified by putting letters with ' , ", or `
 
@@ -528,7 +528,7 @@ JavaScript type and construct
   - endsWith()
   - toLowerCase()
 
-# Functions
+## Functions
 
 - In JS functions are first class objects
   That means they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array like any other variable
@@ -539,7 +539,7 @@ JavaScript type and construct
   - When a function is called the caller may choose parameters
     - If parameter is not provided then value is undefined
 
-# JavaScript Arrow Function
+## JavaScript Arrow Function
 
 - To make the code more compact, the arrow syntax was created.
   - Arrow replaces the need for the function keyword with the symbols => after the parameter declaration
@@ -548,15 +548,42 @@ JavaScript type and construct
 - Return values
   - Arrow functions have special rules for the return keyword
 
-# this pointer
+## Arrays
+
+- Object functions
+  - push : add an item to the end of the array- a.push()
+  - pop : remove an item from the end of the array - x = a.pop()
+  - slice: return a sub-array - a.slice(1,-1)
+  - sort: run a function to sort an array in place - a.sort((a,b)=> b-a)
+  - values: Creates an iterator for use with a for of loop- a.values..
+  - find: find first item satisfied by a test function
+  - forEach: run a function on each array item
+
+## this pointer
 
 - all about scope
   closure
 
-# JSON (JavaScript Object Notation)
+## JSON (JavaScript Object Notation)
 
 - contains an object
+  - provides a simple and effective way to share and store data
 
-# JavaScript Object and classes
+Example of a JSON doc
+{
+"class": {
+"title": "web programming",
+"description": "Amazing"
+},
+"enrollment": ["Marco", "Jana", "فَاطِمَة"],
+"start": "2025-02-01",
+"end": null
+}
 
-- objects can be creater with the new operator
+### COnverting to JavaScript
+
+- convert to and from javaScript using JSON.parse and JSON.stringify
+
+## JavaScript Object and classes
+
+- objects can be created with the new operator
