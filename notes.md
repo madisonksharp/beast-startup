@@ -454,104 +454,99 @@ Adding JavaScript to HTML
 JavaScript type and construct
 
 - Declaring variables
-  ○ Variables aare declared using either let or const
-  § Let x = 1;
-  □ Allows you to change value
-  § Const y = 2;
-  □ Const will cause an error if you attempt to change it
-  ○ Avoid using var
+  - Variables aare declared using either let or const
+  - Let x = 1;
+  - Allows you to change value
+    - Const y = 2;
+  - Const will cause an error if you attempt to change it
+    - Avoid using var
 - Type
   ○ Javascript doesn’t enforce the declaration of a variable before use
   § Null
   □ Type of variable that has not been assigned a value
-  § Undefined
-  □ Not been defined
-  § Boolean
-  □ True or false
-  § Number
-  □ 64 bit signed number
-  § BigInt
-  □ Number of arbitrary magnitude
-  § String
-  □ Textual sequence of characters
-  § Symbol
-  □ Unique value
-  § Object
-  □ Collection of properties represented by name value pairs
-  ® {a:3, b:'fish'}
-  § Function
-  □ Object that has the ability to be called
-  ® Function a(){}
-  § Date
-  □ Calendar dates and times
-  ® new Date('1995-12-17')
-  § Array
-  □ An ordered sequence of any type
-  ® [3, 'fish']
-  § Map
-  □ Collection of key value pairs that support efficient lookups
-  ® New Map()
-  § JSON
-  □ A lightweight data-interchange format used to share informationa ccross programs
+  § Undefined: Not been defined
+  § Boolean: True or false
+  § Number: 64 bit signed number
+  - BigInt: Number of arbitrary magnitude
+  - String: Textual sequence of characters
+  - Symbol: Unique value
+  - Object: Collection of properties represented by name value pairs
+  - Function: Object that has the ability to be called :
+  - Date: Calendar dates and times: new Date('1995-12-17')
+  - Array: An ordered sequence of any type
+  - Map: Collection of key value pairs that support efficient lookups
+    - New Map()
+  - JSON: A lightweight data-interchange format used to share informationa ccross programs
 - Common operators
-  ○ + (add)
-  ○ Subtract -
-  ○ Multiply \*
-  ○ Divide /
-  ○ === equality
+
+  - +(add)
+  - Subtract -
+  - Multiply \*
+  - Divide /
+  - === equality
 
 - Type conversions
-  ○ Strict equality === is preferred
+  - Strict equality === is preferred
 - Conditionals
-  ○ If, else and if else
-  ○ Ternary operator
-  § A === 1 ? Console.log(1) : console.log('not 1');
-  ○ Boolean operations in expression
-  § && (and)
-  § || (or)
-  § ! (not)
-  □ Example
-  ® If (true && (!false || true)){
-  }
+  - If, else and if else
+  - Ternary operator
+    - A === 1 ? Console.log(1) : console.log('not 1');
+  - Boolean operations in expression
+    - && (and)
+    - || (or)
+    - ! (not)
+  - Example
+    If (true && (!false || true)){
+    }
 - Loops
-  ○ For
-  § For (let i=0, i<2; i++){
-  Console.log(i);
-  ○ Do while
-  ○ For in
-  ○ For of
-  ○ While
-  ○ Switch
-  ○ Break and continue
+  - For
+    - For (let i=0, i<2; i++){
+      Console.log(i);
+  - Do while
+  - For in
+  - For of
+  - While
+  - Switch
+  - Break and continue
 
-JavaScript String
+# JavaScript String
 
 - Strings are specified by putting letters with ' , ", or `
 
 - Unicode support
-  ○ JavaScript supports unicode by defining a string
+  - JavaScript supports unicode by defining a string
 - String functions
-  ○ Length
-  ○ indexOf()
-  ○ Split()
-  ○ startsWith()
-  ○ endsWith()
-  ○ toLowerCase()
-  Functions
-- In JS functions are first class objects
-  ○ That means they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array like any other variable
-- Basic syntax
-  ○ Function nameoffunction (){
-  }
-- Function parameters
-  ○ When a function is called the caller may choose parameters
-  § If parameter is not provided then value is undefined
+  - Length
+  - indexOf()
+  - Split()
+  - startsWith()
+  - endsWith()
+  - toLowerCase()
 
-JavaScript Arrow Function
+# Functions
+
+- In JS functions are first class objects
+  That means they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array like any other variable
+- Basic syntax
+  - Function nameoffunction (){
+    }
+- Function parameters
+  - When a function is called the caller may choose parameters
+    - If parameter is not provided then value is undefined
+
+# JavaScript Arrow Function
 
 - To make the code more compact, the arrow syntax was created.
-  ○ Arrow replaces the need for the function keyword with the symbols => after the parameter declaration
-  ○ This is a function that takes no parameters and always returns 3
-  § () => 3;
+  - Arrow replaces the need for the function keyword with the symbols => after the parameter declaration
+  - This is a function that takes no parameters and always returns 3
+    § () => 3;
 - Return values
-  ○ Arrow functions have special rules for the return keyword
+  - Arrow functions have special rules for the return keyword
+
+# JSON (JavaScript Object Notation)
+
+- contains an object
+
+# JavaScript Object and classes
+
+- objects can be creater with the new operator
