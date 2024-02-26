@@ -188,10 +188,370 @@ man - Look up a command in the manual
   > - Redirect output to a file. Overwrites the file if it exists
   >   > - Redirect output to a file. Appends if the file exists
 
-## DNS
+Keystrokes
+CTRL-R - Use type ahead to find previous commands
+CTRL-C - Kill the currently running command
 
-## HTML
+## DNS (Domain Name System )
+
+a decentralized naming system for computers, services, or any resource connected to the Internet. It translates domain names (e.g., example.com) into IP addresses, making it easier to access resources on the internet.
+
+- Domain names are organized hierarchically, with each level separated by dots. For example, in the domain name "www.example.com":
+  - "com" is the top-level domain (TLD).
+  - "example" is the second-level domain.
+  - "www" is the subdomain.
+
+## HTML (Hypertext Markup Language)
+
+the skeleton of a web application
+
+- originally designed to be a publishing format fro web docs
+
+# Elements and tags
+
+html - represents the top level pg structure
+
+- html
+  - head
+    - title
+  - /head
+    - body
+  - main
+    - p
+  - /main
+  - body
+- html
+
+# attributes
+
+- id: gives unique ID to element
+- class: designates element into a named group of elements
+
+- a: defines a hyperlink
+  - a href="url"> name of hyperlink text
+
+element meaning
+html: The page container
+head: Header information
+title: Title of the page
+meta: Metadata for the page such as character set or viewport settings
+script: JavaScript reference. Either a external reference, or inline
+include External content reference
+body: The entire content body of the page
+header: Header of the main content
+footer: Footer of the main content
+nav: Navigational inputs
+main: Main content of the page
+section: A section of the main content
+aside: Aside content from the main content
+div: A block division of content
+span: An inline span of content
+h<1-9>: Text heading. From h1, the highest level, down to h9, the lowest level
+p: A paragraph of text
+b: Bring attention
+table: Table
+tr: Table row
+th: Table header
+td: Table data
+ol,ul: Ordered or unordered list
+li: List item
+a: Anchor the text to a hyperlink
+img: Graphical image reference
+dialog: Interactive component such as a confirmation
+form: A collection of user input
+input: User input field
+audio: Audio content
+video: Video content
+svg: Scalable vector graphic content
+iframe: Inline frame of another HTML page
+
+# Special characters
+
+& & amp;
+< & lt;
+greater than & gt;
+" & quot;
+' & apos;
+😀 & #128512;
+
+# input elements
+
+- form: input container and submission
+  - form action="form.html" method = "post"
+- Fieldset: labeled input grouping
+- input: multiple types of user input
+- select: selection dropdown
+- optgroup: grouped selection dropdown
+- option: sleected option
+- textarea: multiline text input
+- label
+- output
+- meter: display value within known range
+
+- pattern: when used provides a regular expression that must match for input t be valid
+
+# Canvas element
+
+# deploying to production
+
+- Use the deployFiles.sh script found in the example code to deploy Simon to your production environment. Take some time to understand how the script works. The script does three things. Deletes any previous deployment for simon, copies up all of the files found in the project directory, and makes sure Caddy is hosting the files under the simon subdomain of your domain (e.g. simon.yourdomain.click).
 
 ## CSS
 
+makes the skeleton prettier
+
+# 3 ways to associate CSS with HTMl
+
+1. use style attribute and assign a declaration
+
+   - style = "color:green" etc
+
+1. HTML style element to define the rules within the HTML doc
+1. link element
+
+# CSS Selectors
+
+**Combinators**
+
+- descendant
+  - body section
+    - any section that is a descendant of a body
+- child
+  - section (greater than) P
+    - any p that is a direct child of a section
+- general sibling
+  - div ~ p
+    - any p that has a div sibling
+- Adjacent sibling
+  - div +p
+    - any p that has an adjacent sibling
+
+**Class Selector**
+
+- .summary
+- p.summary
+  **ID Selector**
+- #physics
+  **Attribute selector**
+- p[class='summary
+  **pseudo Selector**
+- section:hover
+
+# Declarations
+
+The ones I dont know
+
+- cursor : sets cursor to display when hovering over element
+
+# units
+
+px pixels
+pt num points
+% percentage of parent element
+em a multipliet of the width of the letter m in parents font
+
+# Fonts
+
+**font families**
+
+1. Serif: Small stroke on ends of character
+1. sans-serif: no extra stroke
+1. fixed: characters all same size
+1. symbol : non-language characters
+
+**Importing fonts**
+@ font-face {
+font-family: '
+src: (url)
+}
+
+open source fonts from google
+
+@ import (url)
+
+# Animation
+
+@ keyframes name of animation {
+from {
+
+}
+to {
+
+}
+}
+
+# responsive design
+
+**display**
+none, block, inline, flex, grid
+**media queries**
+@ media
+
+- to tell us which side of the viewport is the longest.
+  to move stuff around with smaller and bigger screens
+
+# Grid
+
+useful when you want to display a group of child elements in a responsive grid
+
+- container element
+
+# Flexbox
+
+display: flex;
+
+- Useful when you want to partition your application into areas that responsively move around as the window resizes or the orientation changes.
+
+# Frameworks
+
+- Tailwind
+- Bootstrap
+  - reference the url
+
 ## JavaScript
+
+Javascript Intro
+JavaScript is a weakly typed language based on concepts in C, Java and Scheme.
+
+- Typically JS is executed using an interpreter at runtime instead of compiling it into a machine specific binary at build time.
+- Makes it very portable'
+- But allows for many errors
+
+# Getting Started
+
+- Console.log('Hello' + ' ' + 'world');
+  - Console.log is the runtime built in function to output the string into the debugger console
+- Can write functions
+  - Function join(a,b){
+    Return a + ' ' +b;
+    }
+- Comments
+  - // line comment
+  - /_ block comment _/
+
+# JavaScript Console
+
+- JS console object provides interaction with JS runtimes debugger console
+
+- Log
+  - The usage of the console object is to output a log message
+    - Console.log('hello');
+  - Output: hello
+    - Can create formatted messages in the log parameter - Console.log('hello %s', 'world');
+      - Output: hello world
+- Timers
+  ○ To see how long a piece of code is running wrap it with time and timeend
+  § Console.time('demo time');
+  § Console.timeEnd('demo time');
+- Count
+  ○ See how many times a block of code is called use count fucntion
+  § Console.count('a');
+
+Adding JavaScript to HTML
+
+- Insert either by putting directly into HTML within a <script> element or using src attribute to reference external JS file
+
+JavaScript type and construct
+
+- Declaring variables
+  ○ Variables aare declared using either let or const
+  § Let x = 1;
+  □ Allows you to change value
+  § Const y = 2;
+  □ Const will cause an error if you attempt to change it
+  ○ Avoid using var
+- Type
+  ○ Javascript doesn’t enforce the declaration of a variable before use
+  § Null
+  □ Type of variable that has not been assigned a value
+  § Undefined
+  □ Not been defined
+  § Boolean
+  □ True or false
+  § Number
+  □ 64 bit signed number
+  § BigInt
+  □ Number of arbitrary magnitude
+  § String
+  □ Textual sequence of characters
+  § Symbol
+  □ Unique value
+  § Object
+  □ Collection of properties represented by name value pairs
+  ® {a:3, b:'fish'}
+  § Function
+  □ Object that has the ability to be called
+  ® Function a(){}
+  § Date
+  □ Calendar dates and times
+  ® new Date('1995-12-17')
+  § Array
+  □ An ordered sequence of any type
+  ® [3, 'fish']
+  § Map
+  □ Collection of key value pairs that support efficient lookups
+  ® New Map()
+  § JSON
+  □ A lightweight data-interchange format used to share informationa ccross programs
+- Common operators
+  ○ + (add)
+  ○ Subtract -
+  ○ Multiply \*
+  ○ Divide /
+  ○ === equality
+
+- Type conversions
+  ○ Strict equality === is preferred
+- Conditionals
+  ○ If, else and if else
+  ○ Ternary operator
+  § A === 1 ? Console.log(1) : console.log('not 1');
+  ○ Boolean operations in expression
+  § && (and)
+  § || (or)
+  § ! (not)
+  □ Example
+  ® If (true && (!false || true)){
+  }
+- Loops
+  ○ For
+  § For (let i=0, i<2; i++){
+  Console.log(i);
+  ○ Do while
+  ○ For in
+  ○ For of
+  ○ While
+  ○ Switch
+  ○ Break and continue
+
+JavaScript String
+
+- Strings are specified by putting letters with ' , ", or `
+
+- Unicode support
+  ○ JavaScript supports unicode by defining a string
+- String functions
+  ○ Length
+  ○ indexOf()
+  ○ Split()
+  ○ startsWith()
+  ○ endsWith()
+  ○ toLowerCase()
+  Functions
+- In JS functions are first class objects
+  ○ That means they can be assigned a name, passed as a parameter, returned as a result, and referenced from an object or array like any other variable
+- Basic syntax
+  ○ Function nameoffunction (){
+  }
+- Function parameters
+  ○ When a function is called the caller may choose parameters
+  § If parameter is not provided then value is undefined
+
+JavaScript Arrow Function
+
+- To make the code more compact, the arrow syntax was created.
+  ○ Arrow replaces the need for the function keyword with the symbols => after the parameter declaration
+  ○ This is a function that takes no parameters and always returns 3
+  § () => 3;
+- Return values
+  ○ Arrow functions have special rules for the return keyword
