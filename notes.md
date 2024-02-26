@@ -77,4 +77,23 @@ Nested list
 - next
   - next
 
-## HTTPS and TLS
+## Dev Essentials
+
+- Intro
+  - Well rounded engineers
+    - Capable
+    - creative
+    - collaborative
+    - curious
+
+## HTTP
+
+## Console Commands
+
+## DNS
+
+## HTML
+
+## CSS
+
+## JavaScript
