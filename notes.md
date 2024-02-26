@@ -302,7 +302,7 @@ makes the skeleton prettier
 
 # CSS box model
 
-! [Box model](images/Screenshot%202024-02-26%20at%2014.58.59.jpeg)
+![Box model](images/Screenshot%202024-02-26%20at%2014.58.59.jpeg)
 
 # 3 ways to associate CSS with HTMl
 
