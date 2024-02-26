@@ -300,6 +300,10 @@ greater than & gt;
 
 makes the skeleton prettier
 
+# CSS box model
+
+! [Box model](./images/Screenshot%202024-02-26%20at%2014.58.59.jpeg)
+
 # 3 ways to associate CSS with HTMl
 
 1. use style attribute and assign a declaration
@@ -440,14 +444,15 @@ JavaScript is a weakly typed language based on concepts in C, Java and Scheme.
     - Can create formatted messages in the log parameter - Console.log('hello %s', 'world');
       - Output: hello world
 - Timers
-  ○ To see how long a piece of code is running wrap it with time and timeend
-  § Console.time('demo time');
-  § Console.timeEnd('demo time');
+  To see how long a piece of code is running wrap it with time and timeend
+  -
+  - Console.time('demo time');
+  - Console.timeEnd('demo time');
 - Count
   ○ See how many times a block of code is called use count fucntion
   § Console.count('a');
 
-Adding JavaScript to HTML
+# Adding JavaScript to HTML
 
 - Insert either by putting directly into HTML within a <script> element or using src attribute to reference external JS file
 
@@ -461,12 +466,12 @@ JavaScript type and construct
   - Const will cause an error if you attempt to change it
     - Avoid using var
 - Type
-  ○ Javascript doesn’t enforce the declaration of a variable before use
-  § Null
-  □ Type of variable that has not been assigned a value
-  § Undefined: Not been defined
-  § Boolean: True or false
-  § Number: 64 bit signed number
+  - Javascript doesn’t enforce the declaration of a variable before use
+  - Null
+    Type of variable that has not been assigned a value
+  - Undefined: Not been defined
+  - Boolean: True or false
+  - Number: 64 bit signed number
   - BigInt: Number of arbitrary magnitude
   - String: Textual sequence of characters
   - Symbol: Unique value
@@ -542,6 +547,11 @@ JavaScript type and construct
     § () => 3;
 - Return values
   - Arrow functions have special rules for the return keyword
+
+# this pointer
+
+- all about scope
+  closure
 
 # JSON (JavaScript Object Notation)
 
