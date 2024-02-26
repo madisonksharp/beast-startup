@@ -111,7 +111,7 @@ Nested list
 - HTTP operates through a request-response cycle. A client (usually a web browser) sends an HTTP request to a server specifying the desired action, such as retrieving a webpage. The server then processes the request and sends back an HTTP response containing the requested resource, along with an appropriate status code.
 - HTTP can be augmented with security protocols like HTTPS (HTTP Secure), which encrypts data exchanged between the client and server, providing a secure channel for communication.
 
-# Caddy
+### Caddy
 
 Is a web service that listens for incoming HTTP requests. Then serves up the requested static files or routes to another web service - is called a gateway or reverse proxy
 
