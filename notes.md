@@ -192,6 +192,9 @@ Keystrokes
 CTRL-R - Use type ahead to find previous commands
 CTRL-C - Kill the currently running command
 
+++y -
+y++ -
+
 ### DNS (Domain Name System )
 
 a decentralized naming system for computers, services, or any resource connected to the Internet. It translates domain names (e.g., example.com) into IP addresses, making it easier to access resources on the internet.
@@ -558,6 +561,11 @@ JavaScript type and construct
   - values: Creates an iterator for use with a for of loop- a.values..
   - find: find first item satisfied by a test function
   - forEach: run a function on each array item
+  - reduce
+  - map
+  - filter
+  - every
+  - some
 
 ### this pointer
 
@@ -584,13 +592,83 @@ Example of a JSON doc
 
 - convert to and from javaScript using JSON.parse and JSON.stringify
 
+- JSON.stringify(obj); - make an object a string
+  JSON.parse- make string into obj
+-
+
 ### JavaScript Object and classes
+
+Objects have common object oriented functionality
+
+- Constructors
+- a this pointer
+- static properties
+- functions
+- inheritance
+
+#### Objects
+
+const pet = new Pet ({Name:"bob"});
+pet['type'] = "fish";
+pet.sound= [1, 2, 3];
+pet.hello = function (){
+console.log(Name, 'barks');
+};
+
+pet.hello();
+OUTPUT: Bob barks
 
 #### Object-Literals
 
 - Syntax allows you to provide the initial composition of the object
-  - const obj = {
-    a: 3,
-    b: 'fish',
-    };
+  const pet = {
+  name:"bob",
+  age: 5,
+
+  }
+  Basically a shorthand
+
 - objects can be created with the new operator
+
+#### object functions
+
+- entries: returns an array of key value pairs
+- keys: returns an array of keys
+- values: returns and array of
+
+#### Constructor
+
+Function that returns and object
+
+function Person(name) {
+return {
+name: name,
+log: function () {
+console.log('My name is ' + this.name);
+},
+};
+}
+
+const p = new Person('Eich');
+p.log();
+// OUTPUT: My name is Eich
+
+#### Regex
+
+#### Rest
+
+-
+
+#### Exceptions
+
+errors happen. exceptions are errors
+
+think of how crazy users are going to use it
+
+allows you to plan for the use cases
+
+### DOM
+
+- parses it into a structure
+
+## Async/await
