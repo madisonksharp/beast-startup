@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="main.css">
+
 
 
 <head>
+
   <meta charset="UTF-8" />
   <!-- Tell browsers not to scale the viewport automatically -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="output.css" rel="stylesheet">
   <title>BuddySystem</title>
   <link rel="icon" href="favicon.ico" />
 </head>
 
-<body>
-  <header>
-    <h1>BuddySystem Login</h1>
+<body class="min-h-screen flex flex-col justify-center w-full bg-blue">
+  <header class="flex w-full bg-green justify-center">
+    <h1 class="font-sans text-3xl font-bold py-4"> BuddySystem Login </h1>
     <!--Navigation-->
-    <nav>
+    <nav class="bg-yellow py-4">
       <menu>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="/user/feed.html">Feed</a></li>
-        <li><a href="/user/goals.html">Goals</a></li>
-        <li><a href="/user/profile.html">Profile</a></li>
+        <ul class="flex justify-center space-x-4">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="/user/feed.html">Feed</a></li>
+          <li><a href="/user/goals.html">Goals</a></li>
+          <li><a href="/user/profile.html">Profile</a></li>
+        </ul>
       </menu>
     </nav>
 
-    <hr />
   </header>
 
-  <main>
+  <main class="flex-grow">
     <h2>Achieving greatness isn't a solo mission-- it's a shared expedition!</h2>
     <p>Login</p>
     <form method="get" action="/user/feed.html">
@@ -41,7 +44,7 @@
     </form>
   </main>
 
-  <footer>
+  <footer class="bg-gray text-white py-4 flex-shrink-0">
     <hr />
     <span class="text-reset">Madison Sharp</span>
     <br />
