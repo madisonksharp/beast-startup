@@ -13,43 +13,72 @@
   <link rel="icon" href="favicon.ico" />
 </head>
 
-<body class="min-h-screen flex flex-col justify-center w-full bg-blue">
-  <header class="flex w-full bg-green justify-center">
-    <h1 class="font-sans text-3xl font-bold py-4"> BuddySystem Login </h1>
+<body class="min-h-screen flex flex-col w-full bg-blue items-center">
+  <header class="flex w-full md:w-11/12  bg-green justify-center items-center">
+    <h1 class="font-sans text-2xl md:text-3xl font-bold "> BuddySystem </h1>
     <!--Navigation-->
-    <nav class="bg-yellow py-4">
-      <menu>
-        <ul class="flex justify-center space-x-4">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="/user/feed.html">Feed</a></li>
-          <li><a href="/user/goals.html">Goals</a></li>
-          <li><a href="/user/profile.html">Profile</a></li>
-        </ul>
-      </menu>
-    </nav>
+    <div id="nav-parent" class=" hidden md:flex w-11/12 justify-end">
+      <nav class="bg-yellow py-4">
+        <menu>
+          <ul id="mobile-menu" class="md:hidden mt-4 flex space-x-4 ">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="/user/feed.html">Feed</a></li>
+            <li><a href="/user/goals.html">Goals</a></li>
+            <li><a href="/user/profile.html">Profile</a></li>
+          </ul>
+        </menu>
+      </nav>
+    </div>
+    <div class="md:hidden">
+      <!-- Hamburger icon for small screens -->
+      <button id="menu-toggle" class="text-white focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+
 
   </header>
 
-  <main class="flex-grow">
-    <h2>Achieving greatness isn't a solo mission-- it's a shared expedition!</h2>
-    <p>Login</p>
-    <form method="get" action="/user/feed.html">
-      <label for="username">Username</label>
-      <input type="text" id="username" placeholder="Your username here" />
-      <label for="password">password</label>
-      <input type="password" id="password" placeholder="Your password here" />
-      <!-- Password text box -->
-      <button type="submit">Login</button>
-      <button type="submit">Create Account</button>
-    </form>
+  <main class=" flex flex-col md:flex-row min-h-screen flex-grow justify-center items-center mx-5">
+    <div class=" h-2/5 md:w-2/5 ">
+      <!--Image-->
+      <h2 class="">Achieving greatness isn't a solo mission-- it's a shared expedition!</h2>
+    </div>
+    <div class="h-3/5 mt-20 bg-pink p-4 flex flex-col items-center md:w-3/5">
+      <p>Login</p>
+      <form class=" flex flex-col" method=" get" action="/user/feed.html">
+        <div>
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Your username here" />
+        </div>
+        <div>
+          <label for="password">password</label>
+          <input type="password" id="password" placeholder="Your password here" />
+        </div>
+        <!-- Password text box -->
+        <button type="submit" class="bg-green p-2 m-2 rounded-lg shadow-lg">Login</button>
+        <button type="submit">Create Account</button>
+      </form>
+    </div>
   </main>
 
-  <footer class="bg-gray text-white py-4 flex-shrink-0">
+  <footer class=" h-20 bg-gray text-white py-4 flex-shrink-0">
     <hr />
     <span class="text-reset">Madison Sharp</span>
     <br />
     <a href="https://github.com/madisonksharp/startup.git">GitHub</a>
   </footer>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      var mobileMenu = document.getElementById('mobile-menu');
+      var navParent = document.getElementById('nav-parent');
+      mobileMenu.classList.toggle('hidden');
+      navParent.classList.toggle('hidden');
+    });
+  </script>
 </body>
 
 </html>
