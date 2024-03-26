@@ -15,12 +15,12 @@
 
 <body class="min-h-screen flex flex-col w-full bg-blue items-center">
   <header class="flex w-full md:w-11/12  bg-green justify-center items-center">
-    <h1 class="font-sans text-2xl md:text-3xl font-bold "> BuddySystem </h1>
+
     <!--Navigation-->
-    <div id="nav-parent" class=" hidden md:flex w-11/12 justify-end">
-      <nav class="bg-yellow py-4">
+    <!-- <div id="nav-parent" class=" hidden md:flex w-11/12 justify-end">
+      <nav class="bg-purple py-4">
         <menu>
-          <ul id="mobile-menu" class="md:hidden mt-4 flex space-x-4 ">
+          <ul class="hidden md: mt-4 flex space-x-4 ">
             <li><a href="index.html">Home</a></li>
             <li><a href="/user/feed.html">Feed</a></li>
             <li><a href="/user/goals.html">Goals</a></li>
@@ -29,25 +29,49 @@
         </menu>
       </nav>
     </div>
-    <div class="md:hidden">
-      <!-- Hamburger icon for small screens -->
-      <button id="menu-toggle" class="text-white focus:outline-none">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-      </button>
-    </div>
+    -->
+    <nav class="bg-gray-800 py-4">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center">
+          <div class="flex-shrink-0">
+            <a class="text-white font-sans text-2xl md:text-3xl font-bold" href="#">Buddy System</a>
+          </div>
+          <div class="hidden md:flex items-center space-x-4">
+            <!-- Menu items for larger screen -->
+            <a class="text-white hover:text-gray-300" href="#">Home</a>
+            <a class="text-white hover:text-gray-300" href="/user/feed.html">Feed</a>
+            <a class="text-white hover:text-gray-300" href="/user/goals.html">Goals</a>
+            <a class="text-white hover:text-gray-300" href="/user/profile.html">Profile</a>
+          </div>
+          <div class="md:hidden">
+            <!-- Hamburger icon for small screens -->
+            <button id="menu-toggle" class=" text-white focus:outline-none">
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            </button>
+          </div>
+          <!--Mobile menu-->
+          <div id="mobile-menu" class="hidden md:hidden mt-4">
+            <a class="block text-white hover:text-gray-300 mb-2" href="#">Home</a>
+            <a class="block text-white hover:text-gray-300 mb-2" href="/user/feed.html">Feed</a>
+            <a class="block text-white hover:text-gray-300 mb-2" href="/user/goals.html">Goals</a>
+            <a class="block text-white hover:text-gray-300" href="/user/profile.html">Profile</a>
 
+          </div>
+        </div>
+      </div>
+    </nav>
 
   </header>
 
   <main class=" flex flex-col md:flex-row min-h-screen flex-grow justify-center items-center mx-5">
     <div class=" h-2/5 md:w-2/5 ">
       <!--Image-->
-      <h2 class="">Achieving greatness isn't a solo mission-- it's a shared expedition!</h2>
+      <h2 class="text-white">Achieving greatness isn't a solo mission-- it's a shared expedition!</h2>
     </div>
     <div class="h-3/5 mt-20 bg-pink p-4 flex flex-col items-center md:w-3/5">
-      <p>Login</p>
       <form class=" flex flex-col" method=" get" action="/user/feed.html">
         <div>
           <label for="username">Username</label>
