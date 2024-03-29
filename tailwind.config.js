@@ -20,11 +20,12 @@ module.exports = {
       gray: "#d4d4d4",
       "gray-light": "#d3dce6",
       white: "#f8fafc",
+      "bs-pale-pink": "#FFF7FC",
+      "bs-periwinkle": "#8B93FF",
+      "bs-blue-purple": "#5755FE",
+      "bs-hot-pink": "#FF71CD",
     },
-    fontFamily: {
-      sans: ["Graphik", "sans-serif"],
-      serif: ["Merriweather", "serif"],
-    },
+
     extend: {},
   },
   plugins: [],
