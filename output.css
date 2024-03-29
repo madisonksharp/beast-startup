@@ -902,6 +902,14 @@ html {
   height: 50%;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -932,6 +940,18 @@ html {
 
 .w-10 {
   width: 2.5rem;
+}
+
+.w-16 {
+  width: 4rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-12 {
+  width: 3rem;
 }
 
 .max-w-7xl {
@@ -2307,6 +2327,19 @@ html {
 .text-bs-hot-pink {
   --tw-text-opacity: 1;
   color: rgb(255 113 205 / var(--tw-text-opacity));
+}
+
+.text-bs-hot-pink\/50 {
+  color: rgb(255 113 205 / 0.5);
+}
+
+.text-bs-hot-pink\/75 {
+  color: rgb(255 113 205 / 0.75);
+}
+
+.text-bs-periwinkle {
+  --tw-text-opacity: 1;
+  color: rgb(139 147 255 / var(--tw-text-opacity));
 }
 
 .underline {
