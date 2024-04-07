@@ -11,27 +11,62 @@
   <link rel="icon" href="favicon.ico" />
 </head>
 
-<body>
-  <header>
-    <h1>Your Profile</h1>
+<body class="min-h-screen flex flex-col w-full bg-bs-pale-pink items-center tracking-wider">
+  <header class="flex w-full md:w-11/12  bg-bs-blue-purple justify-center items-center shadow-lg">
 
-    <nav>
-      <menu>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="/user/feed.html">Feed</a></li>
-        <li><a href="/user/goals.html">Goals</a></li>
-        <li><a href="/user/profile.html">Profile</a></li>
-      </menu>
+
+    <nav class="w-full py-4 max-w-7xl mx-auto px-4">
+      <div class="w-full flex justify-between items-center">
+        <div>
+          <img class="h-10 w-10"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGpwoWte9xeY3146maAym8bs-9dh1HeXm_Xg&usqp=CAU">
+        </div>
+        <div class="flex flex-col flex-grow justify-center items-center">
+          <a class="text-bs-pale-pink font-sans text-2xl md:text-3xl font-bold" href="#">Buddy System</a>
+
+        </div>
+        <div class="hidden md:flex items-center space-x-4">
+          <!-- Menu items for larger screen -->
+          <a class="text-white hover:text-gray-300" href="../index.html">Home</a>
+          <a class="text-white hover:text-gray-300" href="#">Feed</a>
+          <a class="text-white hover:text-gray-300" href="/user/goals.html">Goals</a>
+          <a class="text-white hover:text-gray-300" href="/user/profile.html">Profile</a>
+        </div>
+        <div class="md:hidden">
+          <!-- Hamburger icon for small screens -->
+          <button id="menu-toggle" class=" text-white focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+        <!--Mobile menu-->
+        <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full  bg-bs-blue-purple hidden duration-500">
+          <div
+            class=" text-2xl flex flex-col items-center h-full w-full p-4 justify-between text-bs-pale-pink space-y-3">
+            <button id="menu-close" class="self-end  focus:outline-none">X</button>
+            <a class="block hover:text-bs-hot-pink" href="../index.html">Home</a>
+            <a class="block hover:text-bs-hot-pink" href="#">Feed</a>
+            <a class="block  hover:text-bs-hot-pink" href="/user/goals.html">Goals</a>
+            <a class="block hover:text-bs-hot-pink pb-7 " href="/user/profile.html">Profile</a>
+          </div>
+
+        </div>
+      </div>
+
     </nav>
 
 
-    <hr />
+
   </header>
   <!--Avatar, name, buddies list-->
   <!--Avatar image? maybe not a profile pic. but an avatar. currently a profile pic-->
-  <main>
+  <main class="flex flex-col md:flex-row flex-grow  items-center mx-5 text-gray-dark w-full">
     <!-- All of this info will be stored in the database-->
-    <h2>Maddiesoccer80</h2>
+    <h1 class="text-bs-periwinkle m-2 text-2xl">My Profile</h1>
+
+
     <div id="picture" class="picture-box"><img width="200px" src="../images/MadisonHeadshot.JPG"
         alt="Profile picture" /></div>
 
@@ -57,12 +92,38 @@
 
   </main>
 
-  <footer>
-    <hr />
-    <span class="text-reset">Madison Sharp</span>
-    <br />
-    <a href="https://github.com/madisonksharp/startup.git">GitHub</a>
+  <footer class="flex flex-col justify-center h-20 bg-bs-pale-pink text-gray-dark/50 py-4 flex-shrink-0 space-x-4">
+    <!--motivational quote pulled from API-->
+    <div id="quote" class="space-x-4">
+      <div>"You miss 100% of the shots you don't take."</div>
+      <div>- Michael Jordan</div>
+    </div>
+    <div class="flex flex-row justify-center space-x-4">
+      <span class="text-reset">Madison Sharp</span>
+      <p>•</p>
+      <a href="https://github.com/madisonksharp/startup.git" class="underline">GitHub</a>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+      var mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenu.classList.toggle('hidden');
+
+
+    });
+
+    document.getElementById('menu-close').addEventListener('click', function () {
+      var mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenu.classList.toggle('hidden');
+
+
+    });
+
+
+  </script>
 </body>
 
 </html>
