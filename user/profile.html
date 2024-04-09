@@ -65,23 +65,21 @@
   <main class="flex flex-col md:flex-row flex-grow  items-center mx-5 text-gray-dark w-full">
     <!-- All of this info will be stored in the database-->
     <h1 class="text-bs-periwinkle m-2 text-2xl">My Profile</h1>
+    <h3 id="name"> </h3>
 
-
-    <div id="picture" class="picture-box"><img width="200px" src="../images/MadisonHeadshot.JPG"
-        alt="Profile picture" /></div>
+    <div id="picture" class="picture-box">
+      <img id="profilePic" width="200px" src="../images/MadisonHeadshot.JPG" alt="Profile picture" />
+    </div>
 
     <h3>Your Goals</h3>
-    <ul>
-      <li>Sleep 8 hours nightly</li>
-      <li>take vitamins daily</li>
-      <li>walk dogs daily</li>
+    <ul id="goals">
+
+
     </ul>
 
     <h3>Your Buddies</h3>
-    <ul>
-      <li>Eric (frogoildgear)</li>
-      <li>Abe (abethebabe)</li>
-      <li>Boston (indiebean)</li>
+    <ul id="buddies">
+
     </ul>
 
 
@@ -105,23 +103,58 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('menu-toggle').addEventListener('click', function () {
-      var mobileMenu = document.getElementById('mobile-menu');
+  <script type="module">
+    import { API } from '../api.js';
+    document.addEventListener('DOMContentLoaded', (event) => {
 
-      mobileMenu.classList.toggle('hidden');
+
+      document.getElementById('menu-toggle').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenu.classList.toggle('hidden');
+
+
+      });
+
+      document.getElementById('menu-close').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenu.classList.toggle('hidden');
+
+
+      });
+
+      var user = API.getCurrentUser();
+      document.getElementById('name').innerText = user.name;
+      console.log(JSON.stringify(user));
+
+      var goalsList = document.getElementById('goals');
+      var buddyList = document.getElementById('buddies');
+
+      for (var i = 0; i < user.goals.length; i++) {
+
+        var li = document.createElement('li');
+
+        goalsList.appendChild(li);
+        li.innerHTML = user.goals[i].name;
+
+      }
+
+      for (var i = 0; i < user.buddies.length; i++) {
+
+        var li = document.createElement('li');
+
+        buddyList.appendChild(li);
+        li.innerHTML = user.buddies[i].name;
+
+      }
+
+
+
+
 
 
     });
-
-    document.getElementById('menu-close').addEventListener('click', function () {
-      var mobileMenu = document.getElementById('mobile-menu');
-
-      mobileMenu.classList.toggle('hidden');
-
-
-    });
-
 
   </script>
 </body>

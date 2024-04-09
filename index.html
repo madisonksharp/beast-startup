@@ -61,12 +61,12 @@
   </header>
 
   <main class="flex flex-col md:flex-row flex-grow justify-center items-center mx-5">
-    <div class=" h-2/5 md:w-2/5 text-center">
+    <div id="quote-div" class=" h-2/5 md:w-2/5 text-center">
       <!--Image-->
       <h2 class="text-gray-dark text-3xl">Achieving greatness isn't a solo mission-- it's a shared expedition!</h2>
     </div>
     <div class="w-11/12 mt-20 bg-bs-periwinkle/50 p-4 flex flex-col rounded-xl shadow-lg md:w-3/5">
-      <form class=" flex flex-col space-y-6 text-gray-dark" method=" get" action="/user/feed.html">
+      <form id="login-form" class=" flex flex-col space-y-6 text-gray-dark">
         <div class="flex flex-col space-y-3">
           <label for="username">Username</label>
           <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
@@ -78,8 +78,37 @@
             type="password" id="password" placeholder="Your password here" />
         </div>
         <!-- Password text box -->
-        <button type="submit" class="bg-bs-blue-purple py-3  rounded-lg shadow-lg text-bs-pale-pink">Login</button>
-        <a href="/register.html" class=" text-center underline">Create Account</a>
+        <button id="log-button" type="submit"
+          class="bg-bs-blue-purple py-3  rounded-lg shadow-lg text-bs-pale-pink">Login</button>
+        <a id="reg-link" href="/register.html" class=" text-center underline">Create Account</a>
+      </form>
+      <!--register new account-->
+      <form id="reg-form" class=" hidden flex flex-col space-y-6 text-gray-dark" method=" get" action="/user/feed.html">
+        <div class="flex flex-col space-y-3">
+          <label for="rusername">Username</label>
+          <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
+            type="text" id="rusername" placeholder="Your username here" />
+        </div>
+        <div class="flex flex-col space-y-3">
+          <label for="rname">Name</label>
+          <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
+            type="text" id="rname" placeholder="Your name here" />
+        </div>
+        <div class="flex flex-col space-y-3">
+          <label for="remail">Email</label>
+          <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
+            type="text" id="remail" placeholder="Your email here" />
+        </div>
+        <div class="flex flex-col space-y-3">
+          <label for="rpassword">Password</label>
+          <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
+            type="password" id="rpassword" placeholder="Your password here" />
+        </div>
+        <!-- Password text box -->
+        <button id="reg-button" type="submit"
+          class="bg-bs-blue-purple py-3  rounded-lg shadow-lg text-bs-pale-pink">Create
+          Account</button>
+        <a id="log-link" href="/index.html" class=" text-center underline"> Already have an account? Login</a>
       </form>
     </div>
   </main>
@@ -90,22 +119,79 @@
     <a href="https://github.com/madisonksharp/startup.git" class="underline">GitHub</a>
   </footer>
 
-  <script>
-    document.getElementById('menu-toggle').addEventListener('click', function () {
-      var mobileMenu = document.getElementById('mobile-menu');
 
-      mobileMenu.classList.toggle('hidden');
+  <script type="module">
+    import { API } from './api.js';
+    document.addEventListener('DOMContentLoaded', (event) => {
 
 
+      function toggleLogin() {
+        var loginForm = document.getElementById('login-form');
+        var regForm = document.getElementById('reg-form');
+        var quoteDiv = document.getElementById('quote-div');
+        loginForm.classList.toggle('hidden');
+        regForm.classList.toggle('hidden');
+        quoteDiv.classList.toggle('hidden');
+
+      }
+
+      document.getElementById('menu-toggle').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenu.classList.toggle('hidden');
+
+
+      });
+
+      document.getElementById('menu-close').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenu.classList.toggle('hidden');
+
+
+      });
+
+      document.getElementById('reg-link').addEventListener('click', function (e) {
+        e.preventDefault();
+        toggleLogin();
+
+
+      });
+      document.getElementById('log-link').addEventListener('click', function (e) {
+        e.preventDefault();
+        toggleLogin();
+
+      });
+
+
+      document.getElementById('log-button').addEventListener('click', (e) => {
+        console.log("submit log");
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+
+        if (!API.login(username, password)) {
+          //TODO: error
+          e.preventDefault();
+        }
+
+      });
+      document.getElementById('reg-button').addEventListener('click', (e) => {
+        console.log("submit registration");
+        let username = document.getElementById('rusername').value;
+        let password = document.getElementById('rpassword').value;
+        let name = document.getElementById('rname').value;
+        let email = document.getElementById('remail').value;
+        let profilePic = "";
+
+
+        if (!API.register(username, name, email, password, profilePic)) {
+          //TODO: error
+          e.preventDefault();
+        }
+
+      });
     });
 
-    document.getElementById('menu-close').addEventListener('click', function () {
-      var mobileMenu = document.getElementById('mobile-menu');
-
-      mobileMenu.classList.toggle('hidden');
-
-
-    });
   </script>
 </body>
 
