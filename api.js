@@ -20,8 +20,14 @@ export class API {
 
     //TODO:
     usr.password = password;
-
-    localStorage.setItem("bs-user", JSON.stringify(usr));
+    try {
+      localStorage.removeItem("bs-user");
+      localStorage.setItem("bs-user", JSON.stringify(usr));
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+    return true;
   }
 
   static getCurrentUser() {
@@ -29,7 +35,12 @@ export class API {
     return currentUser;
   }
 
-  static giveKudos() {
+  static giveKudos(toUser) {
     //TODO: call server API websocket
+    //current user gives kudos to other user
+  }
+
+  static gotKudos(fromUser) {
+    //TODO: client function called via the websocket connection with the server when another user (fromUser) gave this current user kudos
   }
 }
