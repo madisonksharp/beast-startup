@@ -8,14 +8,19 @@ export var Users = [
     profilePic: "/images/swimming.jpg",
     goals: [
       {
-        name: "take vitamins",
+        name: "Take Vitamins",
         frequency: "daily",
         streak: "2 days",
       },
       {
-        name: "walk dogs",
+        name: "Walk Dogs",
         frequency: "daily",
         streak: "3 days",
+      },
+      {
+        name: "Go to Gym",
+        frequency: "daily",
+        streak: "5 days",
       },
     ],
     buddies: ["frogoildgear"],

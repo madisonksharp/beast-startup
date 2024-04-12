@@ -60,7 +60,7 @@
 
   </header>
 
-  <main class="flex flex-col md:flex-row flex-grow justify-center items-center mx-5">
+  <main class="flex flex-col flex-grow justify-center items-center mx-5">
     <div id="quote-div" class=" h-2/5 md:w-2/5 text-center">
       <!--Image-->
       <h2 class="text-gray-dark text-3xl">Achieving greatness isn't a solo mission-- it's a shared expedition!</h2>
@@ -78,8 +78,8 @@
             type="password" id="password" placeholder="Your password here" />
         </div>
         <!-- Password text box -->
-        <button id="log-button" type="submit" class="bg-bs-blue-purple py-3  rounded-lg shadow-lg text-bs-pale-pink"
-          onclick="loginClick(e)">Login</button>
+        <button id="log-button" type="submit"
+          class="bg-bs-blue-purple py-3  rounded-lg shadow-lg text-bs-pale-pink">Login</button>
         <a id="reg-link" href="/register.html" class=" text-center underline">Create Account</a>
       </form>
       <!--register new account-->
@@ -180,19 +180,21 @@
 
       });
 
+      document.getElementById('log-button').addEventListener('click', function (e) {
+        console.log("submit log");
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+
+        if (!API.login(username, password)) {
+          //TODO: error
+          e.preventDefault();
+        }
+
+
+      });
+
     });
-    function loginClick(e) {
-      console.log("submit log");
-      let username = document.getElementById('username').value;
-      let password = document.getElementById('password').value;
 
-      if (!API.login(username, password)) {
-        //TODO: error
-        e.preventDefault();
-      }
-
-
-    };
 
   </script>
 </body>

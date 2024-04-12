@@ -62,7 +62,9 @@
     <h1 class="text-bs-periwinkle m-2 text-2xl">My Goals</h1>
 
 
+    <div class>
 
+    </div>
     <div id="picture" class="picture-box"><img width="400px" src="../images/IMG_2601.jpeg"
         alt="pretty volcano picture" /></div>
 
@@ -70,21 +72,14 @@
     <!--database info: which buddies are with you on which goals? 
     What is your streak for each?-->
     <!--daily checkboxes to mark habit done?-->
-    <div id="goals">
-      <ul>
-        <li>Walk dogs daily</li>
-        <ul>
-          <li>7 day streak!</li>
-        </ul>
-        <li>Go to the Gym every day</li>
-        <ul>
-          <li>4 day streak!</li>
-        </ul>
-        <li>Take Vitamins daily</li>
+    <div class=" flex flex-col w-full mt-10 items-center ">
+      <ul id="goals">
+
+
       </ul>
     </div>
 
-    <div id="weeklytracker">
+    <!--<div id="weeklytracker">
       <ul>
         <li>Mon</li>
         <li>Tues</li>
@@ -94,7 +89,7 @@
         <li>Sat</li>
         <li>Sun</li>
       </ul>
-    </div>
+    </div>-->
 
 
 
@@ -112,23 +107,58 @@
       <a href="https://github.com/madisonksharp/startup.git" class="underline">GitHub</a>
     </div>
   </footer>
-  <script>
-    document.getElementById('menu-toggle').addEventListener('click', function () {
-      var mobileMenu = document.getElementById('mobile-menu');
 
-      mobileMenu.classList.toggle('hidden');
+
+  <script type="module">
+    import { API } from '../api.js';
+    document.addEventListener('DOMContentLoaded', (event) => {
+
+
+      document.getElementById('menu-toggle').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenu.classList.toggle('hidden');
+
+
+      });
+
+      document.getElementById('menu-close').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenu.classList.toggle('hidden');
+
+
+      });
+
+      var user = API.getCurrentUser();
+
+
+      console.log(JSON.stringify(user));
+
+      var goalsList = document.getElementById('goals');
+
+      for (var i = 0; i < user.goals.length; i++) {
+
+        var li = document.createElement('li');
+
+        goalsList.appendChild(li);
+        li.innerHTML =
+          "<ul><li><b> " + user.goals[i].name + "</b></li><li> frequency: "
+          + user.goals[i].frequency + "</li><li> streak: "
+          + user.goals[i].streak + "</li></ul>"
+
+          ;
+
+
+
+      }
+
+
+
+
 
 
     });
-
-    document.getElementById('menu-close').addEventListener('click', function () {
-      var mobileMenu = document.getElementById('mobile-menu');
-
-      mobileMenu.classList.toggle('hidden');
-
-
-    });
-
 
   </script>
 </body>
