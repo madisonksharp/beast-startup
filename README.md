@@ -36,17 +36,16 @@ I will use these technologies in these ways:
 - **WebSocket** - as progress toward a goal is made, their streak and progress will be broadcast to the user's friends
 - **React** - Application will use next.js as the web server with react for HTML CSS and JS
 
-## CSS Deliverable
+## CSS deliverable
 
-[x] - done - Prerequisite: Simon CSS deployed to your production environment
-[x] - done - Prerequisite: A link to your GitHub startup repository prominently displayed on your application's home page
-[x] - done - Prerequisite: Notes in your startup Git repository README.md file
-[x] - done - 30% Header, footer, and main content body.
-[x] - done - 20% Navigation elements.
-[x] - done - 10% Responsive to window resizing.
-[x] - done - 20% Application elements.
-[x] - done - 10% Application text content.
-[x] - done - 10% Application images.
+For this deliverable I properly styled the application into its final appearance.
+
+- [x] **Header, footer, and main content body**
+- [x] **Navigation elements** - I created a mobile menu that responds on the click. the links also change to pink when clicked
+- [x] **Responsive to window resizing** - My app looks great on all window sizes and devices
+- [x] **Application elements** - Used good contrast and whitespace
+- [x] **Application text content** - Consistent fonts
+- [x] **Application images** - turned the images into cards with colored backgrounds
 
 ## HTML Startup Deliverable
 
