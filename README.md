@@ -40,10 +40,10 @@ I will use these technologies in these ways:
 
 For this deliverable I implemented by JavaScript so that the application works for a single user. I also added placeholders for future technology.
 
-- [] **login** - When you press enter or the login button it takes you to the voting page.
-- [] **database** - Displayed the voting counts. Currently this is stored and retrieved from local storage, but it will be replaced with the database data later.
-- [] **WebSocket** - I used the setInterval function to periodically increase a random vote count. This will be replaced with WebSocket messages later.
-- [] **application logic** - The highlight and ranking number change based up the user's selections.
+- [x] **login** - When you press enter or the login button it takes you the profile page. when you create a new account and press the create account button, it goes to the feed.
+- [x] **database** - the database stores the signed in user and the login information when an account is created
+- [x] **WebSocket** - I set up giveKudos and gotKudos functions so that the like button will send kudos and show that you got kudos.
+- [x] **application logic** - takes the user goals and buddies (currently from the mock data), takes new user from registration, saves user to local storage and displays their info on profile
 
 ## CSS deliverable
 
