@@ -38,11 +38,11 @@ I will use these technologies in these ways:
 
 ## CSS deliverable
 
-For this deliverable I properly styled the application into its final appearance.
+For this deliverable I properly styled the application. There may be some changes from this into the final application, but I am happy with the results
 
-- [x] **Header, footer, and main content body**
-- [x] **Navigation elements** - I created a mobile menu that responds on the click. the links also change to pink when clicked
-- [x] **Responsive to window resizing** - My app looks great on all window sizes and devices
+- [x] **Header, footer, and main content body** I used TailwindCSS as the framework for my CSS
+- [x] **Navigation elements** - I created a mobile menu that responds on the click. the links also change to pink when clicked. There is also a hamburger menu for a mobile screen size.
+- [x] **Responsive to window resizing** - My app looks great on all window sizes and devices.
 - [x] **Application elements** - Used good contrast and whitespace
 - [x] **Application text content** - Consistent fonts
 - [x] **Application images** - turned the images into cards with colored backgrounds
