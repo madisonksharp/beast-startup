@@ -1,6 +1,6 @@
 //Mock Database
 
-export var Users = [
+const Users = [
   {
     username: "abethebabe",
     name: "Abram",
@@ -45,3 +45,5 @@ export var Users = [
     buddies: ["abethebabe"],
   },
 ];
+
+module.exports = Users;

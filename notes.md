@@ -8,6 +8,10 @@ my-deploy(){
 ./deployFiles.sh -k ~/Downloads/madskey.pem -h buddysystem.click -s $1
 }
 
+my-deploy-service(){
+./deployService.sh -k ~/Downloads/madskey.pem -h buddysystem.click -s $1
+}
+
 ## Markup script
 
 # headings
@@ -678,3 +682,7 @@ allows you to plan for the use cases
 - parses it into a structure
 
 ## Async/await
+
+## Node and routes
+
+HTTP actions : get and post

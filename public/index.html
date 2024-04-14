@@ -68,7 +68,7 @@
       <h2 class="text-gray-dark text-3xl">Achieving greatness isn't a solo mission-- it's a shared expedition!</h2>
     </div>
     <div class="w-11/12 mt-20 bg-bs-periwinkle/50 p-4 flex flex-col rounded-xl shadow-lg md:w-3/5">
-      <form id="login-form" class=" flex flex-col space-y-6 text-gray-dark" action="/user/profile.html">
+      <form id="login-form" class=" flex flex-col space-y-6 text-gray-dark">
         <div class="flex flex-col space-y-3">
           <label for="username">Username</label>
           <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
@@ -165,32 +165,38 @@
 
       });
 
-      document.getElementById('reg-button').addEventListener('click', function (e) {
+      document.getElementById('reg-button').addEventListener('click', async function (e) {
 
         let username = document.getElementById('rusername').value;
         let password = document.getElementById('rpassword').value;
         let name = document.getElementById('rname').value;
         let email = document.getElementById('remail').value;
         let profilePic = "";
+        let success = await API.register(username, name, email, password, profilePic);
 
-
-        if (!API.register(username, name, email, password, profilePic)) {
+        if (!success) {
           //TODO: error
           console.log("register fail");
           e.preventDefault();
-        }
+        } else {
+          e.preventDefault();
+          window.location.href = "/user/profile.html";
+        };
 
       });
 
-      document.getElementById('log-button').addEventListener('click', function (e) {
+      document.getElementById('log-button').addEventListener('click', async function (e) {
         console.log("submit log");
         let username = document.getElementById('username').value;
         let password = document.getElementById('password').value;
-
-        if (!API.login(username, password)) {
+        let success = await API.login(username, password);
+        if (!success) {
           //TODO: error
           e.preventDefault();
-        }
+        } else {
+          e.preventDefault();
+          window.location.href = "/user/feed.html";
+        };
 
 
       });
