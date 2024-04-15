@@ -318,23 +318,27 @@
     </div>
   </footer>
 
-  <script>
-    document.getElementById('menu-toggle').addEventListener('click', function () {
-      var mobileMenu = document.getElementById('mobile-menu');
+  <script type="module">
+    import { API } from '../api.js';
+    document.addEventListener('DOMContentLoaded', (event) => {
+      API.setBaseURL(window.location.origin);
 
-      mobileMenu.classList.toggle('hidden');
+      document.getElementById('menu-toggle').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenu.classList.toggle('hidden');
 
 
+      });
+
+      document.getElementById('menu-close').addEventListener('click', function () {
+        var mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenu.classList.toggle('hidden');
+
+
+      });
     });
-
-    document.getElementById('menu-close').addEventListener('click', function () {
-      var mobileMenu = document.getElementById('mobile-menu');
-
-      mobileMenu.classList.toggle('hidden');
-
-
-    });
-
 
   </script>
 </body>

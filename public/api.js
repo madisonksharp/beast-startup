@@ -1,9 +1,13 @@
 import { User } from "./types.js";
 
 export class API {
+  static baseURL = "http://localhost:4000";
+  static setBaseURL(url) {
+    this.baseURL = url;
+  }
   static async login(username, pass) {
     //TODO: call API to login user
-    const res = await fetch("http://localhost:4000/login", {
+    const res = await fetch(`${this.baseURL}/login`, {
       method: "POST",
       body: JSON.stringify({
         username: username,
@@ -32,7 +36,7 @@ export class API {
 
     //TODO:
     try {
-      const res = await fetch("http://localhost:4000/register", {
+      const res = await fetch(`${this.baseURL}/register`, {
         method: "POST",
         body: JSON.stringify({
           username: username,
@@ -81,7 +85,7 @@ export class API {
     // USER SIDE here: copy login fetch, update fetch body w/new var, return goal,
     const usr = API.getCurrentUser();
 
-    const res = await fetch("http://localhost:4000/add-goal", {
+    const res = await fetch(`${this.baseURL}/add-goal`, {
       method: "POST",
       body: JSON.stringify({
         username: usr.username,

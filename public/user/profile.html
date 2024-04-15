@@ -125,7 +125,7 @@
   <script type="module">
     import { API } from '../api.js';
     document.addEventListener('DOMContentLoaded', async (event) => {
-
+      API.setBaseURL(window.location.origin);
 
       document.getElementById('menu-toggle').addEventListener('click', function () {
         var mobileMenu = document.getElementById('mobile-menu');

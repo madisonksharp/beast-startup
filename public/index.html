@@ -126,6 +126,7 @@
     import { API } from './api.js';
     document.addEventListener('DOMContentLoaded', (event) => {
 
+      API.setBaseURL(window.location.origin);
 
       function toggleLogin() {
         var loginForm = document.getElementById('login-form');
