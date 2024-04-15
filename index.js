@@ -15,6 +15,7 @@ app.post("/login", async (req, res) => {
     var usr = Users[0];
 
     usr.username = req.body.username;
+    usr.name = req.body.username;
 
     res.json(usr);
   } catch (err) {
@@ -55,7 +56,7 @@ app.post("/add-goal", async (req, res) => {
   }
 });
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
