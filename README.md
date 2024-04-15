@@ -99,11 +99,11 @@ types.js has the constructor for the user
 
 For this deliverable I
 
-- [] **Node.js/Express HTTP service** -
-- [] **Static middleware for frontend** -
-- [] **Calls to third party endpoints** - I didn't have time to implement this. 😔
-- [] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for voting.
-- [] **Frontend calls service endpoints** - I did this using the fetch function.
+- [x] **Node.js/Express HTTP service** - (app.js)
+- [x] **Static middleware for frontend** - (app.js)
+- [x] **Calls to third party endpoints** - a quote at the bottom of profile page that is new with refresh
+- [x] **Backend service endpoints** - (in app.js) for login, registration and adding a goal (to profiel page)
+- [x] **Frontend calls service endpoints** - I did this using the fetch function (public/api.js)
 
 ## DB/Login deliverable
 

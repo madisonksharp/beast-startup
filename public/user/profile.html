@@ -64,28 +64,33 @@
   </header>
   <!--Avatar, name, buddies list-->
   <!--Avatar image? maybe not a profile pic. but an avatar. currently a profile pic-->
-  <main class="flex flex-col  flex-grow  items-center mx-5 text-gray-dark w-full">
+  <main class="flex flex-col  flex-grow  items-center mx-5 text-gray-dark w-full md:flex-row">
     <!-- All of this info will be stored in the database-->
-    <h1 class="text-bs-periwinkle m-2 text-2xl">My Profile</h1>
-    <h3 id="name"> </h3>
+    <div class="md: p-4 w-3/5">
+      <h1 class="text-bs-periwinkle m-2 text-2xl">My Profile</h1>
+      <h3 id="name"> </h3>
 
-    <div id="picture" class="picture-box">
-      <img id="profilePic" width="200px" src="../images/MadisonHeadshot.JPG" alt="Profile picture" />
+      <div id="picture" class="picture-box">
+        <img id="profilePic" width="200px" src="../images/MadisonHeadshot.JPG" alt="Profile picture" />
+      </div>
+
+
+
+      <h3>Your Goals</h3>
+      <ul id="goals">
+
+
+      </ul>
+
+
+      <h3>Your Buddies</h3>
+      <ul id="buddies">
+
+      </ul>
     </div>
 
-    <h3>Your Goals</h3>
-    <ul id="goals">
-
-
-    </ul>
-
-
-    <h3>Your Buddies</h3>
-    <ul id="buddies">
-
-    </ul>
-    <div class="w-11/12 mt-20 bg-bs-periwinkle/50 p-4 flex flex-col rounded-xl shadow-lg md:w-3/5">
-      <form id="goal-form" class=" hidden flex flex-col space-y-6 text-gray-dark" method=" get">
+    <div class="w-11/12 m1-3 bg-bs-periwinkle/50 p-4 flex flex-col rounded-xl shadow-lg md: w-1/3">
+      <div id="goal-form" class=" flex flex-col space-y-6 text-gray-dark">
         <div class="flex flex-col space-y-3">
           <label for="goal">Add new Goal:</label>
           <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
@@ -96,10 +101,8 @@
           Save Goal</button>
 
 
-      </form>
+      </div>
     </div>
-
-
 
 
 
@@ -173,27 +176,24 @@
 
     });
     document.getElementById('save-goal-button').addEventListener('click', async function (e) {
+      var goalsList = document.getElementById('goals');
 
       let newGoal = document.getElementById('newGoal').value;
-      let success = await API.addGoal(name, frequency);
+      let addedGoal = await API.addGoal(newGoal, "daily");
 
-      if (!success) {
+      if (!addedGoal) {
         //TODO: error
         console.log("save goal fail");
         e.preventDefault();
       } else {
         e.preventDefault();
-        window.location.href = "/user/profile.html";
+        var li = document.createElement('li');
+        goalsList.appendChild(li);
+        li.innerHTML = addedGoal.name;
+        document.getElementById('newGoal').value = "";
       };
 
-      // for (var i = 0; i < user.goals.length; i++) {
 
-      //   var li = document.createElement('li');
-
-      //   goalsList.appendChild(li);
-      //   li.innerHTML = user.goals[i].name;
-
-      // }
     });
 
   </script>

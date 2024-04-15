@@ -79,9 +79,12 @@ export class API {
   }
   static async addGoal(name, frequency) {
     // USER SIDE here: copy login fetch, update fetch body w/new var, return goal,
-    const res = await fetch("http://localhost:3000/login", {
+    const usr = API.getCurrentUser();
+
+    const res = await fetch("http://localhost:3000/add-goal", {
       method: "POST",
       body: JSON.stringify({
+        username: usr.username,
         name: name,
         frequency: frequency,
       }),
@@ -94,9 +97,11 @@ export class API {
     }
     var data = await res.json();
     console.log(data);
-    var usr = data;
-    //on profile page : show new goal form = done, click save goal then call this, js on profile : append child to goallist
-    // server side app.js: add route (app.use) /add-goal, takes name and freq as body, return goal to add to list
+    var newGoal = data;
+    return newGoal;
+
+    //on profile page : show new goal form = done, click save goal then call this=done , js on profile : append child to goallist =?
+    // server side app.js: add route (app.use) /add-goal =?, takes name and freq as body= done, return goal to add to list= done
   }
 
   //websocket

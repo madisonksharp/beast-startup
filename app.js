@@ -44,13 +44,12 @@ app.post("/add-goal", async (req, res) => {
   try {
     console.log("addGoal called ");
 
-    var usr = Users[0];
-
-    usr.name = req.body.name;
-    usr.frequency = req.body.frequency;
-
-    console.log(usr);
-    res.json(usr);
+    //TODO: usr needs to = DB usr with passed in username
+    const username = req.body.username;
+    const goalName = req.body.name;
+    const goalFrequency = req.body.frequency;
+    //TODO: SAVE TO DATABASE
+    res.json({ name: goalName, frequency: goalFrequency });
   } catch (err) {
     console.log("addGoal error", err.message);
   }
