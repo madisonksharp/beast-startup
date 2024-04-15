@@ -77,7 +77,29 @@ export class API {
     var quote = { quote: data.content, author: data.author };
     return quote;
   }
+  static async addGoal(name, frequency) {
+    // USER SIDE here: copy login fetch, update fetch body w/new var, return goal,
+    const res = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        frequency: frequency,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    if (!res.ok) {
+      console.log(res.status);
+    }
+    var data = await res.json();
+    console.log(data);
+    var usr = data;
+    //on profile page : show new goal form = done, click save goal then call this, js on profile : append child to goallist
+    // server side app.js: add route (app.use) /add-goal, takes name and freq as body, return goal to add to list
+  }
 
+  //websocket
   static giveKudos(toUser) {
     //TODO: call server API websocket
     //current user gives kudos to other user

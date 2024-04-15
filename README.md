@@ -31,7 +31,7 @@ I will use these technologies in these ways:
   - login
   - keeping goal progress
   - habit streak
-  - receiving goals
+  - adding goals
 - **DB/Login** - register and login users, credentials securely stored in database
 - **WebSocket** - as progress toward a goal is made, their streak and progress will be broadcast to the user's friends
 - **React** - Application will use next.js as the web server with react for HTML CSS and JS

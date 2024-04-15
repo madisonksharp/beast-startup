@@ -78,11 +78,24 @@
 
     </ul>
 
+
     <h3>Your Buddies</h3>
     <ul id="buddies">
 
     </ul>
 
+    <form id="goal-form" class=" hidden flex flex-col space-y-6 text-gray-dark" method=" get">
+      <div class="flex flex-col space-y-3">
+        <label for="goal">Add new Goal:</label>
+        <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
+          type="text" id="newGoal" placeholder="Add new Goal" />
+      </div>
+      <button id="save-goal-button" type="submit"
+        class="bg-bs-blue-purple py-3  rounded-lg shadow-lg text-bs-pale-pink">
+        Save Goal</button>
+
+
+    </form>
 
 
 
@@ -156,6 +169,29 @@
 
 
 
+    });
+    document.getElementById('save-goal-button').addEventListener('click', async function (e) {
+
+      let newGoal = document.getElementById('newGoal').value;
+      let success = await API.addGoal(name, frequency);
+
+      if (!success) {
+        //TODO: error
+        console.log("save goal fail");
+        e.preventDefault();
+      } else {
+        e.preventDefault();
+        window.location.href = "/user/profile.html";
+      };
+
+      // for (var i = 0; i < user.goals.length; i++) {
+
+      //   var li = document.createElement('li');
+
+      //   goalsList.appendChild(li);
+      //   li.innerHTML = user.goals[i].name;
+
+      // }
     });
 
   </script>

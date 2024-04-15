@@ -6,6 +6,7 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded());
+
 // Routes
 app.post("/login", async (req, res) => {
   try {
@@ -39,6 +40,21 @@ app.post("/register", async (req, res) => {
   }
 });
 
+app.post("/add-goal", async (req, res) => {
+  try {
+    console.log("addGoal called ");
+
+    var usr = Users[0];
+
+    usr.name = req.body.name;
+    usr.frequency = req.body.frequency;
+
+    console.log(usr);
+    res.json(usr);
+  } catch (err) {
+    console.log("addGoal error", err.message);
+  }
+});
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
