@@ -5,6 +5,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 
 const client = new MongoClient(url);
 const db = client.db("buddysystem");
+const userCollection = db.collection("user");
 
 (async function testConnection() {
   console.log("testing connection");
@@ -19,7 +20,13 @@ const db = client.db("buddysystem");
   process.exit(1);
 });
 
-async function seedDB() {}
+async function seedDB() {
+  Users.forEach(async (usr) => {
+    const passwordHash = await bcrypt.hash("pass123", 10);
+    usr.password = passwordHash;
+    await userCollection.insertOne(usr);
+  });
+}
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = "mongodb+srv://madisonksharp:LWSCSEodqMulLxD9@cluster0.nsrks2t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
