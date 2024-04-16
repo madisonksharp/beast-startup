@@ -73,6 +73,10 @@ async function addGoalForUser(username, goalName, goalFrequency) {
 }
 
 //buddies functions
+// async function getBuddiesForUser(username) {
+//   var usr = await getUser(username);
+//   return usr.buddies;
+// }
 
 module.exports = {
   seedDB,

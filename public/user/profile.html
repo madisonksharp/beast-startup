@@ -68,7 +68,7 @@
     <!-- All of this info will be stored in the database-->
     <div class="md: p-4 w-3/5">
       <h1 class="text-bs-periwinkle m-2 text-2xl">My Profile</h1>
-      <h3 id="username"> </h3>
+      <h3 id="name"> </h3>
 
       <div id="picture" class="picture-box">
         <img id="profilePic" width="200px" src="../images/MadisonHeadshot.JPG" alt="Profile picture" />
@@ -95,6 +95,13 @@
           <label for="goal">Add new Goal:</label>
           <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
             type="text" id="newGoal" placeholder="Add new Goal" />
+          <label for="frequency">Goal frequency</label>
+          <select id="freqDrop">
+            <option value="daily" selected>Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="oneTime">One Time</option>
+          </select>
         </div>
         <button id="save-goal-button" type="submit"
           class="bg-bs-blue-purple py-3  rounded-lg shadow-lg text-bs-pale-pink">
@@ -144,20 +151,13 @@
       });
 
       var user = API.getCurrentUser();
-      document.getElementById('name').innerText = user.name;
+      document.getElementById('name').innerText = user.name ? user.name : user.username;
       console.log(JSON.stringify(user));
 
-      var goalsList = document.getElementById('goals');
+
       var buddyList = document.getElementById('buddies');
 
-      for (var i = 0; i < user.goals.length; i++) {
-
-        var li = document.createElement('li');
-
-        goalsList.appendChild(li);
-        li.innerHTML = user.goals[i].name;
-
-      }
+      createGoalsList(user.goals);
 
       for (var i = 0; i < user.buddies.length; i++) {
 
@@ -179,22 +179,36 @@
       var goalsList = document.getElementById('goals');
 
       let newGoal = document.getElementById('newGoal').value;
-      let addedGoal = await API.addGoal(newGoal, "daily");
+      let frequency = document.getElementById('freqDrop').value;
+      let updatedGoals = await API.addGoal(newGoal, frequency);
 
-      if (!addedGoal) {
+      if (!updatedGoals) {
         //TODO: error
         console.log("save goal fail");
         e.preventDefault();
       } else {
         e.preventDefault();
-        var li = document.createElement('li');
-        goalsList.appendChild(li);
-        li.innerHTML = addedGoal.name;
+        createGoalsList(updatedGoals);
         document.getElementById('newGoal').value = "";
       };
 
 
     });
+
+    function createGoalsList(goals) {
+      var goalsList = document.getElementById('goals');
+      while (goalsList.firstChild) {
+        goalsList.removeChild(goalsList.firstChild);
+      }
+      for (var i = 0; i < goals.length; i++) {
+
+        var li = document.createElement('li');
+
+        goalsList.appendChild(li);
+        li.innerHTML = goals[i].name;
+
+      }
+    }
 
   </script>
 </body>

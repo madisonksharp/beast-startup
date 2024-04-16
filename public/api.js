@@ -101,8 +101,8 @@ export class API {
     }
     var data = await res.json();
     console.log(data);
-    var newGoal = data;
-    return newGoal;
+    var updatedGoals = data;
+    return updatedGoals;
 
     //on profile page : show new goal form = done, click save goal then call this=done , js on profile : append child to goallist =?
     // server side app.js: add route (app.use) /add-goal =?, takes name and freq as body= done, return goal to add to list= done
