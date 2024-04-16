@@ -111,12 +111,12 @@ For this deliverable I
 
 For this deliverable
 
-- [] **MongoDB Atlas database created** - done!
-- [] **Stores data in MongoDB** - done!
-- [] **User registration** - Creates a new account in the database.
-- [] **existing user** - Stores the votes under the same user if the user already exists.
-- [] **Use MongoDB to store credentials** - Stores both user and their votes.
-- [] **Restricts functionality** - You cannot vote until you have logged in. This is restricted on the frontend only. 😔
+- [x] **MongoDB Atlas database created** - done!
+- [x] **Stores data in MongoDB** - done!
+- [x] **User registration** - Creates a new account in the database.
+- [x] **existing user** - Stores the goals and frequency under the logged in user
+- [] **Use MongoDB to store credentials** - Stores user
+- [] **Restricts functionality** -
 
 ## WebSocket deliverable
 

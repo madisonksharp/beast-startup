@@ -158,16 +158,18 @@
       var buddyList = document.getElementById('buddies');
 
       createGoalsList(user.goals);
+      if (user.buddies) {
 
-      for (var i = 0; i < user.buddies.length; i++) {
 
-        var li = document.createElement('li');
+        for (var i = 0; i < user.buddies.length; i++) {
 
-        buddyList.appendChild(li);
-        li.innerHTML = user.buddies[i];
+          var li = document.createElement('li');
 
+          buddyList.appendChild(li);
+          li.innerHTML = user.buddies[i];
+
+        }
       }
-
       const quoteObj = await API.getQuote();
       document.getElementById('quote').innerText = quoteObj.quote;
       document.getElementById('author').innerText = quoteObj.author;
@@ -200,13 +202,15 @@
       while (goalsList.firstChild) {
         goalsList.removeChild(goalsList.firstChild);
       }
-      for (var i = 0; i < goals.length; i++) {
+      if (user.buddies) {
+        for (var i = 0; i < goals.length; i++) {
 
-        var li = document.createElement('li');
+          var li = document.createElement('li');
 
-        goalsList.appendChild(li);
-        li.innerHTML = goals[i].name;
+          goalsList.appendChild(li);
+          li.innerHTML = goals[i].name;
 
+        }
       }
     }
 

@@ -79,7 +79,7 @@
           <input class="bg-bs-pale-pink appearance-none h-10 rounded-lg px-4 focus:outline-none focus:shadow-outline"
             type="password" id="password" placeholder="Your password here" />
         </div>
-        <span id="log-error" class=" text-red-500">
+        <span id="log-error" class="hidden text-red-500 ">
           Unable to login. Please check Username and Password.
         </span>
         <button id="log-button" type="submit"
@@ -193,11 +193,13 @@
         let username = document.getElementById('username').value;
         let password = document.getElementById('password').value;
         let success = await API.login(username, password);
+        let logError = document.getElementById('log-error');
         if (!success) {
-          //TODO: error
+          logError.classList.remove('hidden');
           console.log("error log index.html");
           e.preventDefault();
         } else {
+          logError.classList.add('hidden');
           e.preventDefault();
           window.location.href = "/user/feed.html";
         };

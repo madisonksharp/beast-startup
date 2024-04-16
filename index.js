@@ -4,6 +4,7 @@ const {
   getGoalsForUser,
   getUser,
 } = require("./database.js");
+const bcrypt = require("bcrypt");
 const Users = require("./mock.js");
 const express = require("express");
 const app = express();
@@ -23,9 +24,14 @@ app.post("/login", async (req, res) => {
     const password = req.body.password;
     const usr = await getUser(username);
     if (usr) {
-      if (await bcrypt.compare(password, user.password)) {
-        setAuthCookie(res, user._id.toString());
+      const compare = await bcrypt.compare(password, usr.password);
+      console.log("user password used: ", password);
+      console.log("DB user password: ", usr.password);
+
+      if (await bcrypt.compare(password, usr.password)) {
+        setAuthCookie(res, usr._id.toString());
         //res.send({ id: user._id });
+        delete usr.password;
         console.log("logged in user: ", usr);
         res.json(usr);
         return;
@@ -34,7 +40,7 @@ app.post("/login", async (req, res) => {
     res.status(401).send({ msg: "Unauthorized" });
   } catch (err) {
     console.log("login error", err.message);
-    next(err);
+    res.status(401).send({ msg: "Unauthorized" });
   }
 });
 
@@ -51,11 +57,17 @@ app.post("/register", async (req, res) => {
     const profilePic = req.body.profilePic;
 
     const usr = await createUser(username, name, email, password, profilePic);
-
-    console.log(usr);
-    res.json(usr);
+    if (usr) {
+      setAuthCookie(res, usr._id.toString());
+      delete usr.password;
+      console.log(usr);
+      res.json(usr);
+      return;
+    }
+    res.status(500).send({ msg: "Server error" });
   } catch (err) {
-    console.log("register error", err.message);
+    console.log("reg error", err.message);
+    res.status(500).send({ msg: "Server error" });
   }
 });
 
@@ -79,7 +91,7 @@ app.post("/add-goal", async (req, res) => {
 });
 //set AuthCookie
 function setAuthCookie(res, authToken) {
-  res.cookie(authCookieName, authToken, {
+  res.cookie("auth", authToken, {
     secure: true,
     httpOnly: true,
     sameSite: "strict",
