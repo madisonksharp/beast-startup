@@ -76,7 +76,9 @@ async function addGoalForUser(username, goalName, goalFrequency) {
 }
 
 async function getFeed(username) {
-  return await activityFeed.find();
+  const feed = await activityFeed.find({}).toArray();
+  console.log("database.js: ", JSON.stringify(feed));
+  return feed;
 }
 async function userAddedNewGoal(user, newGoal) {
   const item = {
@@ -105,6 +107,7 @@ module.exports = {
   getGoalsForUser,
   addGoalForUser,
   userAddedNewGoal,
+  getFeed,
 };
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = "mongodb+srv://madisonksharp:LWSCSEodqMulLxD9@cluster0.nsrks2t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";

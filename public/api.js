@@ -118,9 +118,21 @@ export class API {
     console.log(data);
     var updatedGoals = data;
     return updatedGoals;
+  }
 
-    //on profile page : show new goal form = done, click save goal then call this=done , js on profile : append child to goallist =?
-    // server side app.js: add route (app.use) /add-goal =?, takes name and freq as body= done, return goal to add to list= done
+  static async getFeed() {
+    var currentUser = JSON.parse(localStorage.getItem("bs-user"));
+    const res = await fetch(
+      `${this.baseURL}/get-feed?` +
+        new URLSearchParams({
+          username: currentUser.username,
+        })
+    );
+    var data = await res.json();
+    console.log(data);
+    var feed = data;
+
+    return feed;
   }
 
   //websocket

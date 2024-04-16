@@ -3,6 +3,7 @@ const {
   addGoalForUser,
   getGoalsForUser,
   getUser,
+  getFeed,
 } = require("./database.js");
 const bcrypt = require("bcrypt");
 const Users = require("./mock.js");
@@ -92,11 +93,9 @@ app.post("/add-goal", async (req, res) => {
   try {
     console.log("addGoal called ");
 
-    //TODO: usr needs to = DB usr with passed in username
     const username = req.body.username;
     const goalName = req.body.name;
     const goalFrequency = req.body.frequency;
-    //TODO: update api.js and profile.html to get and reshow all goals and not just one
 
     await addGoalForUser(username, goalName, goalFrequency);
     const goals = await getGoalsForUser(username);
@@ -106,6 +105,22 @@ app.post("/add-goal", async (req, res) => {
     console.log("addGoal error", err.message);
   }
 });
+
+app.get("/get-feed", async (req, res) => {
+  try {
+    console.log("getting feed ");
+
+    const username = req.query.username;
+    console.log("req.query: ", req.query);
+
+    const feed = await getFeed(username);
+
+    return feed;
+  } catch (err) {
+    console.log("get feed error", err.message);
+  }
+});
+
 //set AuthCookie
 function setAuthCookie(res, authToken) {
   res.cookie("auth", authToken, {
