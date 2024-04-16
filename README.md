@@ -94,6 +94,8 @@ For this deliverable I implemented by JavaScript so that the application works f
 
 My mock database is mock.js - here it has user information. this is the localstorage it draws from when a user logs in.
 types.js has the constructor for the user
+Also note, I worked on the CSS and Javascript kind of overlapping, so the commits are throughout the whole period with some javascript before the CSS was finished etc.
+and there are some things in here that are only done on one page and not the others, because other functionality will have to be replaced when I work on the react deliverable.
 
 ## Service deliverable
 
@@ -114,7 +116,7 @@ For this deliverable
 - [] **User registration** - Creates a new account in the database.
 - [] **existing user** - Stores the votes under the same user if the user already exists.
 - [] **Use MongoDB to store credentials** - Stores both user and their votes.
-- [ ] **Restricts functionality** - You cannot vote until you have logged in. This is restricted on the frontend only. 😔
+- [] **Restricts functionality** - You cannot vote until you have logged in. This is restricted on the frontend only. 😔
 
 ## WebSocket deliverable
 
