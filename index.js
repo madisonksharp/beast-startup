@@ -71,6 +71,23 @@ app.post("/register", async (req, res) => {
   }
 });
 
+app.get("/get-user", async (req, res) => {
+  try {
+    console.log("getting user ");
+
+    const username = req.query.username;
+    console.log("req.query: ", req.query);
+
+    const user = await getUser(username);
+    if (user) {
+      delete user.password;
+      res.json(user);
+    }
+  } catch (err) {
+    console.log("get user error", err.message);
+  }
+});
+
 app.post("/add-goal", async (req, res) => {
   try {
     console.log("addGoal called ");

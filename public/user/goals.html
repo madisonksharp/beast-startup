@@ -113,7 +113,7 @@
 
   <script type="module">
     import { API } from '../api.js';
-    document.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', async (event) => {
       API.setBaseURL(window.location.origin);
 
       document.getElementById('menu-toggle').addEventListener('click', function () {
@@ -132,7 +132,7 @@
 
       });
 
-      var user = API.getCurrentUser();
+      var user = await API.getCurrentUser();
 
 
       console.log(JSON.stringify(user));

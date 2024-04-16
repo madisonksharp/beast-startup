@@ -150,12 +150,14 @@
 
       });
 
-      var user = API.getCurrentUser();
+      var user = await API.getCurrentUser();
+      console.log("user gotten on profile.html: ", user);
       document.getElementById('name').innerText = user.name ? user.name : user.username;
       console.log(JSON.stringify(user));
 
 
       var buddyList = document.getElementById('buddies');
+
       if (user.goals) {
         createGoalsList(user.goals);
       }

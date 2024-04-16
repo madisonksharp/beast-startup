@@ -8,6 +8,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db("buddysystem");
 const userCollection = db.collection("user");
+const activityFeed = db.collection("activityfeed");
 
 (async function testConnection() {
   console.log("testing connection");
@@ -70,6 +71,25 @@ async function addGoalForUser(username, goalName, goalFrequency) {
       },
     }
   );
+  var usr = await getUser(username);
+  await userAddedNewGoal(usr, { name: goalName, frequency: goalFrequency });
+}
+
+async function getFeed(username) {
+  return await activityFeed.find();
+}
+async function userAddedNewGoal(user, newGoal) {
+  const item = {
+    user: user.name,
+    profilePic: user.profilePic,
+    body: `has set a new ${newGoal.frequency} goal to ${newGoal.name}!`,
+    dateAdded: new Date(),
+  };
+  await activityFeed.insertOne(item);
+}
+
+function userGotKudos(giver, getter, postId) {
+  //this will fill in when we do websockets
 }
 
 //buddies functions
@@ -84,6 +104,7 @@ module.exports = {
   createUser,
   getGoalsForUser,
   addGoalForUser,
+  userAddedNewGoal,
 };
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = "mongodb+srv://madisonksharp:LWSCSEodqMulLxD9@cluster0.nsrks2t.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";

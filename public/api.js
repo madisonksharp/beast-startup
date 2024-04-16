@@ -25,7 +25,7 @@ export class API {
     console.log(data);
     var usr = data;
     // save user to local storage
-
+    localStorage.setItem("bs-user", JSON.stringify(usr));
     localStorage.setItem("bs-user", JSON.stringify(usr));
 
     // return true if logged in
@@ -58,6 +58,7 @@ export class API {
       var usr = data;
 
       localStorage.removeItem("bs-user");
+
       localStorage.setItem("bs-user", JSON.stringify(usr));
     } catch (e) {
       console.log(e);
@@ -66,9 +67,22 @@ export class API {
     return true;
   }
 
-  static getCurrentUser() {
+  static async getCurrentUser() {
     var currentUser = JSON.parse(localStorage.getItem("bs-user"));
-    return currentUser;
+    const res = await fetch(
+      `${this.baseURL}/get-user?` +
+        new URLSearchParams({
+          username: currentUser.username,
+        })
+    );
+    var data = await res.json();
+    console.log(data);
+    var usr = data;
+
+    localStorage.removeItem("bs-user");
+
+    localStorage.setItem("bs-user", JSON.stringify(usr));
+    return usr;
   }
 
   static async getQuote() {
@@ -84,7 +98,7 @@ export class API {
   }
   static async addGoal(name, frequency) {
     // USER SIDE here: copy login fetch, update fetch body w/new var, return goal,
-    const usr = API.getCurrentUser();
+    const usr = await API.getCurrentUser();
 
     const res = await fetch(`${this.baseURL}/add-goal`, {
       method: "POST",
