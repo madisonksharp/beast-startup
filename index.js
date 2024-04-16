@@ -1,3 +1,9 @@
+const {
+  createUser,
+  addGoalForUser,
+  getGoalsForUser,
+  getUser,
+} = require("./database.js");
 const Users = require("./mock.js");
 const express = require("express");
 const app = express();
@@ -12,14 +18,16 @@ app.post("/login", async (req, res) => {
   try {
     console.log("login called ");
     //TODO: authenticate with req.body.username and req.body.password
-    var usr = Users[0];
 
-    usr.username = req.body.username;
-    usr.name = req.body.username;
-
+    const username = req.body.username;
+    const password = req.body.password;
+    const usr = await getUser(username);
+    //TODO: login only if user is in database with that usrname and password
+    console.log("returning usr after getUser: ", usr);
     res.json(usr);
   } catch (err) {
     console.log("login error", err.message);
+    next(err);
   }
 });
 
@@ -27,13 +35,16 @@ app.post("/register", async (req, res) => {
   try {
     console.log("register called ");
     //TODO: authenticate with req.body.username and req.body.password
-    var usr = Users[0];
 
-    usr.username = req.body.username;
-    usr.name = req.body.name;
-    usr.email = req.body.email;
-    //usr.password =req.body.password
-    usr.profilePic = req.body.profilePic;
+    const username = req.body.username;
+    const name = req.body.name;
+    const email = req.body.email;
+    //will hash password
+    const password = req.body.password;
+    const profilePic = req.body.profilePic;
+
+    const usr = await createUser(username, name, email, password, profilePic);
+
     console.log(usr);
     res.json(usr);
   } catch (err) {
@@ -49,8 +60,12 @@ app.post("/add-goal", async (req, res) => {
     const username = req.body.username;
     const goalName = req.body.name;
     const goalFrequency = req.body.frequency;
-    //TODO: SAVE TO DATABASE
-    res.json({ name: goalName, frequency: goalFrequency });
+    //TODO: update api.js and profile.html to get and reshow all goals and not just one
+
+    await addGoalForUser(username, goalName, goalFrequency);
+    const goals = await getGoalsForUser(username);
+
+    res.json(goals);
   } catch (err) {
     console.log("addGoal error", err.message);
   }
