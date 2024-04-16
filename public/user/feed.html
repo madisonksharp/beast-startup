@@ -132,13 +132,17 @@
 
       const feed = await API.getFeed();
       const feedContainer = document.getElementById("feed");
+      var feedHTML = "";
 
       for (var i = 0; i < feed.length; i++) {
-        const item = generateFeedCard(feed[i]);
-        feedContainer.appendChild(item);
+        const itemHTML = generateFeedCard(feed[i]);
+        feedHTML = feedHTML + itemHTML;
 
       }
-
+      const parser = new DOMParser();
+      const blah = parser.parseFromString(feedHTML, "text/html");
+      const doc = blah.getRootNode();
+      feedContainer.appendChild(doc.body);
 
     });
 
@@ -149,7 +153,8 @@
     }
 
     function generateFeedCard(feedItem) {
-      const smallHTML = `<span> ${feedItem.body}</span>`
+
+      const smallHTML = `<span> ${feedItem.body}</span>`;
       const cardHTML = `<div id="card2" class="bg-bs-periwinkle/50 p-4 flex flex-col w-full">
         <div id="card2-header" class="flex flex-row pb-8">
           <img src="${feedItem.profilePic}" class="rounded-full w-12 h-12">
@@ -171,9 +176,11 @@
         </div>
       </div>`;
 
-      const card = stringToFragment(smallHTML);
 
-      return card;
+
+
+
+      return cardHTML;
 
 
     }

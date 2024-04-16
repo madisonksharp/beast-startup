@@ -115,7 +115,7 @@ app.get("/get-feed", async (req, res) => {
 
     const feed = await getFeed(username);
 
-    return feed;
+    res.json(feed);
   } catch (err) {
     console.log("get feed error", err.message);
   }
