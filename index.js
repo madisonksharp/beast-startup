@@ -22,9 +22,16 @@ app.post("/login", async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
     const usr = await getUser(username);
-    //TODO: login only if user is in database with that usrname and password
-    console.log("returning usr after getUser: ", usr);
-    res.json(usr);
+    if (usr) {
+      if (await bcrypt.compare(password, user.password)) {
+        setAuthCookie(res, user._id.toString());
+        //res.send({ id: user._id });
+        console.log("logged in user: ", usr);
+        res.json(usr);
+        return;
+      }
+    }
+    res.status(401).send({ msg: "Unauthorized" });
   } catch (err) {
     console.log("login error", err.message);
     next(err);
@@ -70,6 +77,15 @@ app.post("/add-goal", async (req, res) => {
     console.log("addGoal error", err.message);
   }
 });
+//set AuthCookie
+function setAuthCookie(res, authToken) {
+  res.cookie(authCookieName, authToken, {
+    secure: true,
+    httpOnly: true,
+    sameSite: "strict",
+  });
+}
+
 // Start the server
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

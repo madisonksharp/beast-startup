@@ -19,6 +19,7 @@ export class API {
     });
     if (!res.ok) {
       console.log(res.status);
+      return false;
     }
     var data = await res.json();
     console.log(data);
