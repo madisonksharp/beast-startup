@@ -156,8 +156,9 @@
 
 
       var buddyList = document.getElementById('buddies');
-
-      createGoalsList(user.goals);
+      if (user.goals) {
+        createGoalsList(user.goals);
+      }
       if (user.buddies) {
 
 
@@ -202,16 +203,16 @@
       while (goalsList.firstChild) {
         goalsList.removeChild(goalsList.firstChild);
       }
-      if (user.buddies) {
-        for (var i = 0; i < goals.length; i++) {
 
-          var li = document.createElement('li');
+      for (var i = 0; i < goals.length; i++) {
 
-          goalsList.appendChild(li);
-          li.innerHTML = goals[i].name;
+        var li = document.createElement('li');
 
-        }
+        goalsList.appendChild(li);
+        li.innerHTML = goals[i].name;
+
       }
+
     }
 
   </script>
