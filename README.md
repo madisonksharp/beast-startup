@@ -125,16 +125,16 @@ For this deliverable
 - [] **Backend listens for WebSocket connection** - done!
 - [] **Frontend makes WebSocket connection** - done!
 - [] **Data sent over WebSocket connection** - done!
-- [] **WebSocket data displayed** - All user votes display in realtime. I'm really proud that this is working. Way cool!
+- [] **WebSocket data displayed** -
 
 ## React deliverable
 
 For this deliverable
 
-- [] **Bundled and transpiled** - done!
-- [] **Components** - Login, voting list, vote are all components.
-- [] **Router** - Routing between login and voting components.
-- [] **Hooks** - Vue uses class properties instead of `UseState` to track changes in vote state.
+- [] **Bundled and transpiled** -
+- [] **Components** -
+- [] **Router** -
+- [] **Hooks** - .
 
 ## Notes
 
