@@ -134,6 +134,9 @@
     document.addEventListener('DOMContentLoaded', async (event) => {
       API.setBaseURL(window.location.origin);
 
+
+
+
       document.getElementById('menu-toggle').addEventListener('click', function () {
         var mobileMenu = document.getElementById('mobile-menu');
 
@@ -155,6 +158,10 @@
       document.getElementById('name').innerText = user.name ? user.name : user.username;
       console.log(JSON.stringify(user));
 
+      if (!user) {
+        window.location.href = index.html
+        return
+      }
 
       var buddyList = document.getElementById('buddies');
 

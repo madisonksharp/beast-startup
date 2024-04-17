@@ -115,8 +115,8 @@ For this deliverable
 - [x] **Stores data in MongoDB** - done!
 - [x] **User registration** - Creates a new account in the database.
 - [x] **existing user** - Stores the goals and frequency under the logged in user
-- [] **Use MongoDB to store credentials** - Stores user
-- [] **Restricts functionality** -
+- [x] **Use MongoDB to store credentials** - Stores user and hashes password
+- [] **Restricts functionality** - if not logged in, user can't go to feed, profile, or goals pages
 
 ## WebSocket deliverable
 

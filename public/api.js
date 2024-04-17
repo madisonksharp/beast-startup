@@ -68,6 +68,13 @@ export class API {
   }
 
   static async getCurrentUser() {
+    if (!localStorage.getItem("bs-user")) {
+      return null;
+    }
+    //each page call getcurrentuser if null
+    // window.location.href= index.html
+    //on index.html - call getcurrentuser and hide menu if returns null
+
     var currentUser = JSON.parse(localStorage.getItem("bs-user"));
     const res = await fetch(
       `${this.baseURL}/get-user?` +

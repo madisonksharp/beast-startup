@@ -116,6 +116,8 @@
     document.addEventListener('DOMContentLoaded', async (event) => {
       API.setBaseURL(window.location.origin);
 
+
+
       document.getElementById('menu-toggle').addEventListener('click', function () {
         var mobileMenu = document.getElementById('mobile-menu');
 
@@ -137,6 +139,10 @@
 
       console.log(JSON.stringify(user));
 
+      if (!user) {
+        window.location.href = index.html
+        return
+      }
       var goalsList = document.getElementById('goals');
 
       for (var i = 0; i < user.goals.length; i++) {

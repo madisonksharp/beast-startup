@@ -126,9 +126,11 @@
 
   <script type="module">
     import { API } from './api.js';
-    document.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('DOMContentLoaded', async (event) => {
 
       API.setBaseURL(window.location.origin);
+
+      //instead of window.locaiton.href add hidden
 
       function toggleLogin() {
         var loginForm = document.getElementById('login-form');
@@ -155,6 +157,12 @@
 
 
       });
+
+      var user = await API.getCurrentUser();
+      if (!user) {
+        mobileMenu.classList.add('hidden');
+        return
+      }
 
       document.getElementById('reg-link').addEventListener('click', function (e) {
         e.preventDefault();
