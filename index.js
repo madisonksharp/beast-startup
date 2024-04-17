@@ -8,6 +8,7 @@ const {
 const bcrypt = require("bcrypt");
 const Users = require("./mock.js");
 const express = require("express");
+const { peerProxy } = require("./peerProxy.js");
 const app = express();
 
 // Middleware to serve static files from the public directory
@@ -132,6 +133,8 @@ function setAuthCookie(res, authToken) {
 
 // Start the server
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+const httpService = app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+peerProxy(httpService);

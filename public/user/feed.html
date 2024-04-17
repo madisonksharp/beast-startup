@@ -94,8 +94,9 @@
 
   <footer class="flex flex-col justify-center h-20 bg-bs-pale-pink text-gray-dark/50 py-4 flex-shrink-0 space-x-4">
     <!--motivational quote pulled from API-->
-    <div id="quote" class="space-x-4">
-
+    <div id="quote-container" class="space-x-4">
+      <span id="quote"></span>
+      <span id="author"></span>
     </div>
     <div class="flex flex-row justify-center space-x-4">
       <span class="text-reset">Madison Sharp</span>
@@ -149,6 +150,24 @@
       const doc = blah.getRootNode();
       feedContainer.appendChild(doc.body);
 
+      // document.getElementById('like-button').addEventListener('click', async function (e) {
+      //   const itemId = e.target.tagName;
+      //   const likeCount = await API.giveKudos(itemId);
+      //   e.target.value = `${likeCount} Likes`;
+
+      // });
+
+      let btns = document.querySelectorAll('button.like-button');
+
+      btns.forEach(function (i) {
+        i.addEventListener('click', async function (e) {
+          const itemId = e.target.tagName;
+          const likeCount = await API.giveKudos(itemId);
+          e.target.value = `${likeCount} Likes`;
+          //... this will be whatever you have in your current click code
+        });
+      });
+
       const quoteObj = await API.getQuote();
       document.getElementById('quote').innerText = quoteObj.quote;
       document.getElementById('author').innerText = quoteObj.author;
@@ -178,13 +197,13 @@
         </div>
 
         <div id="card2-footer">
-          <button id="likeButton2" class="flex items-center space-x-1 text-gray-300 hover:text-red-500">
-            <svg id="heartIcon2" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 20 20">
+          <button name="${feedItem._id}" class=" like-button flex items-center space-x-1 text-gray-300 hover:text-red-500">
+            <svg id="heartIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current" viewBox="0 0 20 20">
               <path id="heartPath2" fill-rule="evenodd"
                 d="M10 18.1l-1.45-1.32C4.32 13.28 2 11.14 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.91 4.5 2.36C13.09 3.91 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 2.64-2.32 4.78-6.55 8.28L10 18.1z"
                 clip-rule="evenodd" />
             </svg>
-            <span class="text-sm">Like</span>
+            <span class="text-sm"> ${feed.likeCount ? likeCount : 0} Likes </span>
           </button>
         </div>
       </div>`;

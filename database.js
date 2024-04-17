@@ -90,7 +90,18 @@ async function userAddedNewGoal(user, newGoal) {
   await activityFeed.insertOne(item);
 }
 
-function userGotKudos(giver, getter, postId) {
+async function userGotKudos(data) {
+  const updatedItem = await activityFeed.updateOne(
+    {
+      _id: data.feedItemId,
+    },
+    {
+      $inc: {
+        likeCount: 1,
+      },
+    }
+  );
+  return updatedItem.likeCount;
   //this will fill in when we do websockets
 }
 

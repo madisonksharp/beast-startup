@@ -1,9 +1,20 @@
-import { User } from "./types.js";
+//const { peerProxy } = require("./peerProxy.js");
+const GaveKudosEvent = "gave-kudos-event";
+const GotKudosEvent = "got-kudos-event";
 
 export class API {
+  // socket;
+
+  // constructor(){
+  //   this.configureWebSocket();
+  // }
+
   static baseURL = "http://localhost:4000";
   static setBaseURL(url) {
     this.baseURL = url;
+  }
+  static {
+    this.configureWebSocket();
   }
   static async login(username, pass) {
     //TODO: call API to login user
@@ -142,13 +153,43 @@ export class API {
     return feed;
   }
 
-  //websocket
-  static giveKudos(toUser) {
+  //ws
+
+  static async giveKudos(username, feedItemId) {
+    await this.broadcastEvent(username, this.GaveKudosEvent, feedItemId);
     //TODO: call server API websocket
     //current user gives kudos to other user
   }
 
-  static gotKudos(fromUser) {
+  static gotKudos(data) {
+    console.log("gotKudos data: ", JSON.stringify(data));
     //TODO: client function called via the websocket connection with the server when another user (fromUser) gave this current user kudos
+  }
+
+  static configureWebSocket() {
+    const protocol = `wss`;
+    const testProtocol = `${protocol}://${window.location.host}/ws`;
+    console.log("test protocol url is : ", testProtocol);
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onopen = (event) => {
+      console.log("client websocket connected");
+    };
+    this.socket.onclose = (event) => {
+      console.log("client websocket disconnected");
+    };
+    this.socket.onmessage = async (event) => {
+      const msg = JSON.parse(await event.data.text());
+      if (msg.type === GotKudosEvent) {
+        this.gotKudos(message.data);
+      }
+    };
+  }
+  static broadcastEvent(fromUser, type, data) {
+    const event = {
+      fromUser: fromUser,
+      type: type,
+      data: data,
+    };
+    this.socket.send(JSON.stringify(event));
   }
 }
