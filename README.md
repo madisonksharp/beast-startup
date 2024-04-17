@@ -116,7 +116,7 @@ For this deliverable
 - [x] **User registration** - Creates a new account in the database.
 - [x] **existing user** - Stores the goals and frequency under the logged in user
 - [x] **Use MongoDB to store credentials** - Stores user and hashes password
-- [] **Restricts functionality** - if not logged in, user can't go to feed, profile, or goals pages
+- [x] **Restricts functionality** - if getCurrentUser returns null, aka the user is not logged in, user can't go to feed, profile, or goals pages. it redirects to the index.html page.
 
 ## WebSocket deliverable
 
