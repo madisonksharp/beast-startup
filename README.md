@@ -127,6 +127,8 @@ For this deliverable
 - [x] **Data sent over WebSocket connection** - done!
 - [] **WebSocket data displayed** - Couldn't figure out how to parse the data and get it to display. :(
 
+the websockets are used with the feed.
+
 ## React deliverable
 
 For this deliverable
