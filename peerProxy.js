@@ -25,24 +25,32 @@ function peerProxy(httpServer) {
 
     // Forward messages to everyone
 
-    ws.on("message", async function message(msg) {
-      if (msg.type == GaveKudosEvent) {
-        const newLikeCount = await userGotKudos(msg.data);
-        const outMessage = {
-          fromUser: msg.fromUser,
-          type: GotKudosEvent,
-          data: {
-            feedItemId: msg.data.feedItemId,
-            newLikeCount: newLikeCount,
-          },
-        };
-        connections.forEach((c) => {
-          c.ws.send();
-          //in case we want to send to everyone but the sender
-          // if (c.id !== connection.id) {
-          //   c.ws.send(data);
-          // }
-        });
+    ws.on("message", async function message(event) {
+      console.log("got message: ", JSON.stringify(event));
+      const d = event.data;
+      console.log("data :", d);
+      if (typeof event.data === "string") {
+        //create a JSON object
+        var msg = JSON.parse(event.data);
+        console.log("parsed: ", msg);
+        if (msg.type == GaveKudosEvent) {
+          const newLikeCount = await userGotKudos(msg.data);
+          const outMessage = {
+            fromUser: msg.fromUser,
+            type: GotKudosEvent,
+            data: {
+              feedItemId: msg.data.feedItemId,
+              newLikeCount: newLikeCount,
+            },
+          };
+          connections.forEach((c) => {
+            c.ws.send();
+            //in case we want to send to everyone but the sender
+            // if (c.id !== connection.id) {
+            //   c.ws.send(data);
+            // }
+          });
+        }
       }
     });
 

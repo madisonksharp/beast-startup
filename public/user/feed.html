@@ -166,8 +166,9 @@
 
       btns.forEach(function (i) {
         i.addEventListener('click', async function (e) {
-          const itemId = e.target.tagName;
-          const likeCount = await API.giveKudos(itemId);
+          const itemId = e.currentTarget.name;
+          console.log("e.target: ", e.currentTarget);
+          const likeCount = await feedObj.giveKudos(user.username, itemId);
           e.target.value = `${likeCount} Likes`;
           //... this will be whatever you have in your current click code
         });

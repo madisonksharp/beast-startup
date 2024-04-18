@@ -10,9 +10,11 @@ export class Feed {
     console.log("Im ready for bed. feed.js");
   }
   configureWebSocket() {
-    const protocol = `wss`;
-    const testProtocol = `${protocol}://${window.location.host}/ws`;
-    console.log("test protocol url is : ", testProtocol);
+    // const protocol = `wss`;
+    // const testProtocol = `${protocol}://${window.location.host}/ws`;
+    // console.log("test protocol url is : ", testProtocol);
+    // this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    const protocol = window.location.protocol === "http:" ? "ws" : "wss";
     this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
     this.socket.onopen = (event) => {
       console.log("client websocket connected");
@@ -28,11 +30,25 @@ export class Feed {
     };
   }
   broadcastEvent(fromUser, type, data) {
-    const event = {
+    const msg = {
       fromUser: fromUser,
       type: type,
       data: data,
     };
-    this.socket.send(JSON.stringify(event));
+    console.log("broadcastEvent msg: ", JSON.stringify(msg));
+    this.socket.send(JSON.stringify(msg));
+  }
+
+  async giveKudos(username, feedItemId) {
+    await this.broadcastEvent(username, this.GaveKudosEvent, {
+      feedItemId: feedItemId,
+    });
+    //TODO: call server API websocket
+    //current user gives kudos to other user
+  }
+
+  gotKudos(data) {
+    console.log("gotKudos data: ", JSON.stringify(data));
+    //TODO: client function called via the websocket connection with the server when another user (fromUser) gave this current user kudos
   }
 }

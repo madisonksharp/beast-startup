@@ -122,10 +122,10 @@ For this deliverable
 
 For this deliverable
 
-- [] **Backend listens for WebSocket connection** - done!
-- [] **Frontend makes WebSocket connection** - done!
-- [] **Data sent over WebSocket connection** - done!
-- [] **WebSocket data displayed** -
+- [x] **Backend listens for WebSocket connection** - done!
+- [x] **Frontend makes WebSocket connection** - done!
+- [x] **Data sent over WebSocket connection** - done!
+- [] **WebSocket data displayed** - Couldn't figure out how to parse the data and get it to display. :(
 
 ## React deliverable
 

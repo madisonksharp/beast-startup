@@ -144,15 +144,4 @@ export class API {
   }
 
   //ws
-
-  static async giveKudos(username, feedItemId) {
-    await this.broadcastEvent(username, this.GaveKudosEvent, feedItemId);
-    //TODO: call server API websocket
-    //current user gives kudos to other user
-  }
-
-  static gotKudos(data) {
-    console.log("gotKudos data: ", JSON.stringify(data));
-    //TODO: client function called via the websocket connection with the server when another user (fromUser) gave this current user kudos
-  }
 }
