@@ -11,6 +11,7 @@ function peerProxy(httpServer) {
   // Handle the protocol upgrade from HTTP to WebSocket
   httpServer.on("upgrade", (request, socket, head) => {
     wss.handleUpgrade(request, socket, head, function done(ws) {
+      console.log("handleUpgrade done");
       wss.emit("connection", ws, request);
     });
   });
