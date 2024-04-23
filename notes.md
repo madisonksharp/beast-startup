@@ -685,6 +685,19 @@ allows you to plan for the use cases
 
 ## HTTP
 
+### Ports and protocols
+
+- 20: File Transfer Protocol (FTP) for data transfer
+- 22: Secure Shell (SSH) for connecting to remote devices
+- 25: Simple Mail Transfer Protocol (SMTP) for sending email
+- 53:Domain Name System (DNS) for looking up IP addresses
+- 80: Hypertext Transfer Protocol (HTTP) for web requests
+- 110: Post Office Protocol (POP3) for retrieving email
+- 123: Network Time Protocol (NTP) for managing time
+- 161: Simple Network Management Protocol (SNMP) for managing network devices such as routers or printers
+- 194: Internet Relay Chat (IRC) for chatting
+- 443: HTTP Secure (HTTPS) for secure web requests
+
 - **HTTP** stands for Hypertext Transfer Protocol. It's a language computers use to communicate over the internet, like sending requests for web pages.
 
 ### Client and Server:
@@ -766,10 +779,14 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/w
 Accept-Encoding: gzip, deflate, br
 Connection: keep-alive
 
-### Other notes
+### Fetch
 
-- port 80 is reserved for HTTP
-  **Cookies:**
+The fetch API is the preferred way to make HTTP requests. The fetch function is built into the browser's JavaScript runtime. This means you can call it from JavaScript code running in a browser.
+
+The basic usage of fetch takes a URL and returns a promise. The promise then function takes a callback function that is asynchronously called when the requested URL content is obtained. If the returned content is of type application/json you can use the json function on the response object to convert it to a JavaScript object.
+
+#### **Cookies:**
+
 - pieces of data websites store on your computer or device when you visit them. to enhance browser experience, personalize content, track activities.
 - contain info like preferences, login credentials, browsing history, other data
 - types: session cookies, temp cookies erased when browser closed and persistent cookies remain on device even after closing browser
@@ -796,9 +813,11 @@ Connection: keep-alive
 #### General Headers
 
 1. **Date:** Specifies the date and time when the message was sent.
+
 2. **Connection:** Controls whether the network connection stays open after the current transaction finishes.
 3. **Content-Encoding:** Specifies the encoding applied to the response body (e.g., gzip, deflate).
 4. **Transfer-Encoding:** Specifies the form of encoding used to transfer the payload in chunks.
+5. **Access-control-allow-origin** Server response of what origins can make a request. May include a wildcard
 
 ### HTTP Status Codes
 
@@ -818,6 +837,8 @@ Connection: keep-alive
 - **301 Moved Permanently:** The requested resource has been permanently moved to a new location.
 - **302 Found (or Moved Temporarily):** The requested resource has been temporarily moved to a different location.
 - **304 Not Modified:** The client's cached copy of the resource is still valid, and the server has not modified it.
+- **307 Permanent Redirect**
+- **308 Temporary Redirect**
 
 #### 4xx Client Error
 
@@ -825,6 +846,10 @@ Connection: keep-alive
 - **401 Unauthorized:** The request requires user authentication.
 - **403 Forbidden:** The server understood the request but refuses to authorize it.
 - **404 Not Found:** The requested resource could not be found on the server.
+- **408 Request Timeout**
+- **409 Conflict**
+- **418 I'm a teapot**
+- **429 too many requests**
 
 #### 5xx Server Error
 
@@ -834,7 +859,14 @@ Connection: keep-alive
 
 ## Web services
 
+### Aspects of web services
+
 ### Web Server
+
+#### Daemon
+
+- The term daemon comes from the idea of something that is always there working in the background.
+- PM2
 
 - A computing device that is hosting a web service that knows how to accept incoming internet connections and speak the http protocol
 
@@ -846,12 +878,121 @@ Connection: keep-alive
 4. **Logging Mechanism:** Records information about incoming requests, server errors, and other events for monitoring and troubleshooting purposes.
 5. **Security Features:** Implements security measures to protect against unauthorized access, denial-of-service attacks, and other security threats.
 
+#### Basic Workflow of a Web Server:
+
+1. **Listen for Incoming Requests:** The web server listens on a specified port (usually port 80 for HTTP or port 443 for HTTPS) for incoming requests from clients.
+2. **Process Requests:** When a request is received, the server processes it by determining the requested resource and any additional parameters (e.g., query strings).
+3. **Retrieve Resources:** The server retrieves the requested resources from the file system or generates dynamic content using server-side scripting languages (e.g., PHP, Python).
+4. **Generate Response:** Once the resources are obtained, the server constructs an HTTP response containing the requested content, status code, and headers.
+5. **Send Response:** The server sends the HTTP response back to the client over the network.
+6. **Log Events:** The server logs information about the request, response, and server-side events for monitoring, analysis, and troubleshooting.
+
+## Domain Names
+
+### What is a Domain Name?
+
+A domain name is a human-readable address used to identify and access websites on the internet. It provides a memorable and meaningful way to locate specific web resources, such as websites, web pages, or email servers.
+
+### Components of a Domain Name:
+
+1. **Top-Level Domain (TLD):**
+
+   - The highest level in the domain name hierarchy.
+   - Examples include `.com`, `.org`, `.net`, `.edu`, and country-code TLDs like `.us`, `.uk`, and `.de`.
+
+2. **Second-Level Domain (SLD):**
+
+   - The part of the domain name that precedes the top-level domain.
+   - Represents the name of the organization, business, or entity.
+   - For example, in `example.com`, "example" is the second-level domain.
+
+3. **Subdomain:**
+   - An optional prefix added to the domain name to create additional addressable sections.
+   - Often used to organize and categorize content or create distinct web services.
+   - For example, in `blog.example.com`, "blog" is a subdomain of `example.com`.
+
+### Domain Name Registration:
+
+- Domain names are registered through domain registrars, organizations accredited by the Internet Corporation for Assigned Names and Numbers (ICANN) to manage domain registrations.
+- Registrants can search for available domain names and register them for a specific period, typically one to ten years, by paying a registration fee.
+- Domain registration requires providing accurate contact information and adhering to domain registration policies and regulations.
+
+### Domain Name System (DNS):
+
+- The Domain Name System (DNS) is a distributed system that translates domain names into IP addresses, allowing computers to locate resources on the internet.
+- DNS servers maintain databases called DNS zones that store mappings between domain names and IP addresses.
+- When a user enters a domain name in a web browser, the browser queries DNS servers to resolve the domain name to the corresponding IP address.
+
+### Domain Name Extensions:
+
+- Domain name extensions, also known as TLDs, can indicate the type, purpose, or geographical location of a website.
+- Common generic TLDs include `.com` (commercial), `.org` (organization), `.net` (network), and `.info` (information).
+- Specialized TLDs cater to specific industries or interests, such as `.edu` (education), `.gov` (government), and `.io` (technology startups).
+
+### Domain Name Management:
+
+- Domain owners can manage their domain settings, including DNS configuration, email forwarding, and WHOIS privacy, through domain registrar control panels or management interfaces.
+- Regular maintenance, renewal, and monitoring of domain registrations are essential to ensure uninterrupted access to web resources and prevent domain expiration.
+
+## Parts of a URL
+
+A URL (Uniform Resource Locator) is a string of characters used to specify the address of a web resource on the internet. It typically consists of several components:
+
+1. **Scheme:**
+
+   - The scheme indicates the protocol used to access the resource. Common schemes include `http://`, `https://`, `ftp://`, `mailto:`, and `file://`.
+
+2. **Hostname:**
+
+   - The hostname (or domain name) identifies the server that hosts the resource. It may include subdomains and the top-level domain (TLD). For example, in `www.example.com`, `www` is a subdomain, and `example.com` is the domain name.
+
+3. **Port (Optional):**
+
+   - The port number specifies the network port used to communicate with the server. If omitted, the default port for the specified scheme is used (e.g., port 80 for HTTP, port 443 for HTTPS).
+
+4. **Path:**
+
+   - The path specifies the location of the resource on the server's filesystem or within the web application. It starts with a forward slash (/) and may consist of multiple segments separated by slashes.
+
+5. **Query Parameters (Optional):**
+
+   - Query parameters provide additional information to the server, typically in the form of key-value pairs. They appear after a question mark (?) and are separated by ampersands (&). For example, `?key1=value1&key2=value2`.
+
+6. **Fragment (Optional):**
+   - The fragment identifier specifies a specific section or location within the resource. It appears after a hash symbol (#) and is used primarily in HTML documents to link to specific sections of a webpage.
+
+Here's an example of a URL with all its components:
+
+`plaintext
+https://www.example.com:8080/path/to/resource?key1=value1&key2=value2#section1
+| | | | | | |
+|------|----------|--------|----------|------------------|-------------------|
+|Scheme| Hostname| Port | Path | Query Parameters | Fragment |
+
 ## Database services
+
+### DB Query
+
+- lt = less than
+- gt = greater than
+
+/J._/: This is a regular expression pattern enclosed in forward slashes (/). In MongoDB, when you use regular expressions in queries, you typically use them to match against string values.
+J._: This regular expression pattern means:
+J: Match the letter "J" exactly.
+._: Match zero or more of any character (except newline). So ._ means match any string of characters.
 
 ## Authorization services
 
 ## Websocket
 
+###
+
 ## Web Application frameworks
 
 ## Web Security
+
+```
+SOP  - you can only call to your origin
+CORS
+- Cross origin resource sharing configuring to allow
+```
