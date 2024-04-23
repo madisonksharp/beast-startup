@@ -683,6 +683,175 @@ allows you to plan for the use cases
 
 ## Async/await
 
-## Node and routes
+## HTTP
 
-HTTP actions : get and post
+- **HTTP** stands for Hypertext Transfer Protocol. It's a language computers use to communicate over the internet, like sending requests for web pages.
+
+### Client and Server:
+
+- **Client:** Your computer or phone.
+- **Server:** The computer hosting a website.
+
+### Request-Response Cycle:
+
+1. You send an HTTP request to the server.
+2. The server processes the request and sends back an HTTP response.
+3. Your browser interprets the response and displays the webpage.
+
+### Parts of an HTTP Request:
+
+- **URL:** Address of the webpage.
+- **Method:** Indicates what action you want to perform (e.g., GET, POST).
+- **Headers:** Additional information about the request.
+- **Body:** Optional data sent to the server.
+
+### Parts of an HTTP Response:
+
+- **Status Code:** Indicates if the request was successful or encountered an error.
+- **Headers:** Additional information from the server.
+- **Body:** Content of the webpage.
+
+### HTTP Methods:
+
+- **GET:** Retrieve a webpage.
+- **POST:** Send data to the server.
+- **PUT:** Store data on the server.
+- **DELETE:** Delete data from the server.
+
+### HTTP vs. HTTPS:
+
+- **HTTPS:** Secure version of HTTP that encrypts data for added security.
+
+### TCP/IP layers
+
+- application, HTTPS, functionality like web browsing
+- transport, TCP, Moving connection info packets
+- Internet, IP, Establishing connections
+- Link, Fiber, hardware, physical connections
+
+## HTTP requests
+
+### What is an HTTP Request?
+
+An HTTP request is a message sent from a client (such as a web browser) to a server, requesting information or an action to be performed.
+
+### Parts of an HTTP Request:
+
+1. **URL (Uniform Resource Locator):**
+
+   - Specifies the address of the resource being requested.
+
+2. **Method:**
+
+   - Indicates the type of action the client wants the server to perform. Common methods include:
+     - `GET`: Retrieve a resource.
+     - `POST`: Submit data to be processed.
+     - `PUT`: Update a resource.
+     - `DELETE`: Remove a resource.
+
+3. **Headers:**
+
+   - Additional information about the request, such as the type of browser being used or the format of the data being sent.
+
+4. **Body (Optional):**
+   - Contains additional data sent with the request. For example, when submitting a form, the form data is included in the request body.
+
+### Example of an HTTP Request:
+
+http
+GET /example-page HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,_/_;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+### Other notes
+
+- port 80 is reserved for HTTP
+  **Cookies:**
+- pieces of data websites store on your computer or device when you visit them. to enhance browser experience, personalize content, track activities.
+- contain info like preferences, login credentials, browsing history, other data
+- types: session cookies, temp cookies erased when browser closed and persistent cookies remain on device even after closing browser
+- Purpose: authentication, personalization, tracking, session management
+
+### Standard HTTP headers
+
+#### Request headers
+
+1. **Accept:** Specifies the types of content the client can accept.
+2. **User-Agent:** Identifies the type of browser or user agent making the request.
+3. **Host:** Indicates the host name and port number of the requested resource.
+4. **Authorization:** Contains credentials for authenticating the client with the server.
+5. **Content-Type:** Specifies the media type of the data sent in the request body (for POST and PUT requests).
+
+#### response headers
+
+1. **Content-Type:** Indicates the media type of the content sent in the response body.
+2. **Content-Length:** Specifies the length of the response body in bytes.
+3. **Cache-Control:** Directives for caching mechanisms in both requests and responses.
+4. **Set-Cookie:** Sets a cookie in the client's browser with information for subsequent requests.
+5. **Location:** Specifies the URL to redirect the client to (used in redirection responses like 301 and 302).
+
+#### General Headers
+
+1. **Date:** Specifies the date and time when the message was sent.
+2. **Connection:** Controls whether the network connection stays open after the current transaction finishes.
+3. **Content-Encoding:** Specifies the encoding applied to the response body (e.g., gzip, deflate).
+4. **Transfer-Encoding:** Specifies the form of encoding used to transfer the payload in chunks.
+
+### HTTP Status Codes
+
+#### 1xx Informational
+
+- **100 Continue:** The server has received the initial part of the request and is waiting for the client to continue.
+- **101 Switching Protocols:** The server is switching protocols as requested by the client (e.g., upgrading to WebSocket).
+
+#### 2xx Success
+
+- **200 OK:** The request was successful.
+- **201 Created:** The request has been fulfilled, resulting in the creation of a new resource.
+- **204 No Content:** The server successfully processed the request but does not need to return any content.
+
+#### 3xx Redirection
+
+- **301 Moved Permanently:** The requested resource has been permanently moved to a new location.
+- **302 Found (or Moved Temporarily):** The requested resource has been temporarily moved to a different location.
+- **304 Not Modified:** The client's cached copy of the resource is still valid, and the server has not modified it.
+
+#### 4xx Client Error
+
+- **400 Bad Request:** The server cannot process the request due to a client error (e.g., malformed syntax).
+- **401 Unauthorized:** The request requires user authentication.
+- **403 Forbidden:** The server understood the request but refuses to authorize it.
+- **404 Not Found:** The requested resource could not be found on the server.
+
+#### 5xx Server Error
+
+- **500 Internal Server Error:** The server encountered an unexpected condition that prevented it from fulfilling the request.
+- **502 Bad Gateway:** The server, while acting as a gateway or proxy, received an invalid response from the upstream server.
+- **503 Service Unavailable:** The server is currently unable to handle the request due to temporary overload or maintenance.
+
+## Web services
+
+### Web Server
+
+- A computing device that is hosting a web service that knows how to accept incoming internet connections and speak the http protocol
+
+#### Key Components of a Web Server:
+
+1. **HTTP Server:** Handles incoming HTTP requests from clients and sends back HTTP responses containing the requested content.
+2. **File System:** Stores the web content (HTML files, images, CSS, JavaScript, etc.) that the server serves to clients.
+3. **Configuration Files:** Define settings and parameters for the web server, such as port number, virtual hosts, and security settings.
+4. **Logging Mechanism:** Records information about incoming requests, server errors, and other events for monitoring and troubleshooting purposes.
+5. **Security Features:** Implements security measures to protect against unauthorized access, denial-of-service attacks, and other security threats.
+
+## Database services
+
+## Authorization services
+
+## Websocket
+
+## Web Application frameworks
+
+## Web Security
