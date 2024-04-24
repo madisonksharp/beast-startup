@@ -857,9 +857,50 @@ The basic usage of fetch takes a URL and returns a promise. The promise then fun
 - **502 Bad Gateway:** The server, while acting as a gateway or proxy, received an invalid response from the upstream server.
 - **503 Service Unavailable:** The server is currently unable to handle the request due to temporary overload or maintenance.
 
+### package.json
+
+1.  Metadata about your project such as its name and the default entry JavaScript file
+2.  commands (scripts) that you can execute to do things like run, test, or distribute your code
+3.  packages that this project depends upon.
+
 ## Web services
 
-### Aspects of web services
+### Express
+
+provides support for:
+
+1. Routing requests for service endpoints
+2. Manipulating HTTP requests with JSON body content
+3. Generating HTTP responses
+4. using middleware to add functionality
+
+#### middleware
+
+- A middleware function follows this pattern : function middlewareName(req, res, next)
+
+### Endpoints (API)
+
+- web service is divided up into multiple service endpoints. each endpoint provides a single functional purpose.
+
+### Types of Web Services:
+
+1. **SOAP (Simple Object Access Protocol):**
+
+   - A protocol for exchanging structured information in the implementation of web services.
+   - Uses XML (Extensible Markup Language) for message format and relies on other protocols like HTTP, SMTP, or FTP for communication.
+   - Often used in enterprise environments for integration between different systems.
+
+2. **REST (Representational State Transfer):**
+
+   - An architectural style for designing networked applications.
+   - Utilizes the HTTP protocol for communication and typically relies on simple, stateless interactions between clients and servers.
+   - Uses standard HTTP methods like GET, POST, PUT, DELETE to perform CRUD (Create, Read, Update, Delete) operations on resources.
+   - Emphasizes scalability, simplicity, and performance.
+
+3. **GraphQL:**
+   - A query language for APIs (Application Programming Interfaces) developed by Facebook.
+   - Allows clients to request only the data they need, minimizing over-fetching and under-fetching issues common in REST APIs.
+   - Provides a single endpoint for fetching data, enabling clients to specify the structure of the data they require in a query.
 
 ### Web Server
 
@@ -886,6 +927,18 @@ The basic usage of fetch takes a URL and returns a promise. The promise then fun
 4. **Generate Response:** Once the resources are obtained, the server constructs an HTTP response containing the requested content, status code, and headers.
 5. **Send Response:** The server sends the HTTP response back to the client over the network.
 6. **Log Events:** The server logs information about the request, response, and server-side events for monitoring, analysis, and troubleshooting.
+
+### Uploading Files
+
+#### frontend code
+
+#### BACKEND code
+
+Multer handles reading the file from the HTTP request, enforcing the size limit of the upload, and storing the file in the uploads directory. Additionally our service code does the following:
+
+1. Handles requests for static files so that we can serve up our frontend code.
+2. Handles errors such as when the 64k file limit is violated.
+3. Provides a GET endpoint to serve up a file from the uploads directory.
 
 ## Domain Names
 
@@ -971,15 +1024,40 @@ https://www.example.com:8080/path/to/resource?key1=value1&key2=value2#section1
 
 ## Database services
 
-### DB Query
+### services and their specialties
+
+- MySQL : relational queries
+- Redis: memory cached objects
+- ElasticSearch: ranked free text
+- MOngoDB: JSON objects
+- DynamoDB: Key value pairs
+- Neo4J: graph based data
+- InfluxDB: time series data
+
+### MONgo DB Query
 
 - lt = less than
 - gt = greater than
 
-/J._/: This is a regular expression pattern enclosed in forward slashes (/). In MongoDB, when you use regular expressions in queries, you typically use them to match against string values.
-J._: This regular expression pattern means:
-J: Match the letter "J" exactly.
-._: Match zero or more of any character (except newline). So ._ means match any string of characters.
+- /J.\_/: This is a regular expression pattern enclosed in forward slashes (/). In MongoDB, when you use regular expressions in queries, you typically use them to match against string values.
+- J.\_: This regular expression pattern means:
+- J: Match the letter "J" exactly.
+- ._: Match zero or more of any character (except newline). So ._ means match any string of characters.
+
+- // find all houses
+- db.house.find();
+
+- // find houses with two or more bedrooms
+- db.house.find({ beds: { $gte: 2 } });
+
+- // find houses that are available with less than three beds
+- db.house.find({ status: 'available', beds: { $lt: 3 } });
+
+- // find houses with either less than three beds or less than $1000 a night
+- db.house.find({ $or: [(beds: { $lt: 3 }), (price: { $lt: 1000 })] });
+
+- // find houses with the text 'modern' or 'beach' in the summary
+- db.house.find({ summary: /(modern|beach)/i });
 
 ## Authorization services
 
