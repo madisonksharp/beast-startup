@@ -785,6 +785,11 @@ The fetch API is the preferred way to make HTTP requests. The fetch function is 
 
 The basic usage of fetch takes a URL and returns a promise. The promise then function takes a callback function that is asynchronously called when the requested URL content is obtained. If the returned content is of type application/json you can use the json function on the response object to convert it to a JavaScript object.
 
+### SOP and CORS
+
+- SOP you can only call to your origin
+  CORS : Cross origin resource sharing configuring to allow
+
 #### **Cookies:**
 
 - pieces of data websites store on your computer or device when you visit them. to enhance browser experience, personalize content, track activities.
@@ -1061,16 +1066,274 @@ https://www.example.com:8080/path/to/resource?key1=value1&key2=value2#section1
 
 ## Authorization services
 
+standard protocols for authenticating and authorizing
+
+#### create authentication endpoint
+
+This takes an email and password and returns a cookie containing the authentication token and user ID. If the email already exists it returns a 409 (conflict) status code.
+
+#### passing authentication tokens
+
+1. httpOnly tells the browser to not allow JavaScript running on the browser to read the cookie.
+2. secure requires HTTPS to be used when sending the cookie back to the server.
+3. sameSite will only return the cookie to the domain that generated it.
+
 ## Websocket
+
+Allows computers talk to eachother quickly and easily. "peer to peer"
+
+### How they work
+
+1. your computer (the client) sends a message to another computer (the server) saying "lets chat using websockets"
+2. Once both computers agree they keep the line open.
+3. now the comupters can send messages whenevr. they can talk and listen at the same time
+4. COnnection closes
+
+### syntax
+
+- send
+- onmessage - registers callback
+- When connection is detected, it calls the servers on connection callback. thne server can send messages with send function and register callback with on message function to recieve messages
+- window.location.protocol : ws non secure. wss secure
 
 ###
 
 ## Web Application frameworks
 
+Web frameworks seek to make the job of writing web applications easier by providing tools for completing common application tasks. This includes things like modularizing code, creating single page applications, simplifying reactivity, and supporting diverse hardware devices.
+
+Some frameworks take things beyond the standard web technologies (HTML, CSS, JavaScript) and create new hybrid file formats that combine things like HTML and JavaScript into a single file. Examples of this include React JSX, Vue SFC, and Svelte files. Abstracting away the core web file formats puts the focus on functional components rather than files.
+
 ## Web Security
 
+### terminology
+
+- Hacking: making a system do stuff its not supposed to do
+- Exploit: code or input that takes advantage of a programming or configuration flow
+- attack vector: Method an attacker employs to penetrate and exploit a system
+- attack surface: exposed parts of a system that an attacker can access
+- attack payload: the actual code or data that a hacker delivers to a system to exploit it
+- input sanitization: "cleaning: any input of potentially malicious data
+- black box testing: testing application without knowledge of the internals of the application
+- white box testing: testing application **with** knowledge of the source code and internal infrastructure
+- penetration testing: attempting to gain access to, epxloit a system in ways that are not anticipated by developers
+- mitigation: action taken to remove or reduce a threat
+
+### Motivation for attackers
+
+- **Disruption** - By overloading a system, encrypting essential data, or deleting critical infrastructure-- destroying normal busines operations. maybe an attempt at extortion or an attemmpt to punish a business the attacker doesnt agree with
+- **Data exfiltration** - Privately extracting or publicly exposing a systems data -- embarassing company, exploiting insider info, selling info, or leveraging
+- **resource Consumption** - Taking control of company's computing resources to use it for other purposes like mining crypto, gathering customer info or attacking other systems.
+
+### Hacking techniques
+
+- **Injection**: When an application interacts with a database on the backend, a programmer will often take user input and concatenate it directly into a search query. This allows a hacker can use a specially crafted query to make the database reveal hidden information or even delete the database.
+- **Cross-site scripting (XSS)** - A category of attacks where an attacker can make malicious code execute on a different user's browser. If successful, an attacker can turn a website that a user trusts, into one that can steal passwords and hijack a user's account.
+- **denial of service** - This includes any attack where the main goal is to render any service inaccessible. This can be done by deleting a database using an SQL injection, by sending unexpected data to a service endpoint that causes the program to crash, or by simply making more requests than a server can handle.
+- **Credential suffering** - People have a tendency to reuse passwords or variations of passwords on different websites. If a hacker has a user's credentials from a previous website attack, then there is a good chance that they can successfully use those credentials on a different website. A hacker can also try to brute force attack a system by trying every possible combination of password.
+- **Social engineering** - Appealing to a human's desire to help, in order to gain unauthorized access or information.
+
+### ways to avoid getting hacked
+
+- **Sanitize input data** - Always assume that any data you receive from outside your system will be used to exploit your system. Consider if the input data can be turned into an executable expression, or can overload computing, bandwidth, or storage resources.
+- **Logging** - It is not possible to think of every way that your system can be exploited, but you can create an immutable log of requests that will expose when a system is being exploited. You can then trigger alerts, and periodically review the logs for unexpected activity.
+- **traps** - Create what appears to be valuable information and then trigger alarms when the data is accessed.
+- **Educate** - Teach yourself, your users, and everyone you work with, to be security minded. Anyone who has access to your system should understand how to prevent physical, social, and software attacks.
+- **reduce attack surfaces** - Do not open access anymore than is necessary to properly provide your application. This includes what network ports are open, what account privileges are allowed, where you can access the system from, and what endpoints are available.
+- **Layered security** - Do not assume that one safeguard is enough. Create multiple layers of security that each take different approaches. For example, secure your physical environment, secure your network, secure your server, secure your public network traffic, secure your private network traffic, encrypt your storage, separate your production systems from your development systems, put your payment information in a separate environment from your application environment. Do not allow data from one layer to move to other layers. For example, do not allow an employee to take data out of the production system.
+- **Least required access policy** - Do not give any one user all the credentials necessary to control the entire system. Only give a user what access they need to do the work they are required to do.
+- **Safeguard credentials** - Do not store credentials in accessible locations such as a public GitHub repository or a sticky note taped to a monitor. Automatically rotate credentials in order to limit the impact of an exposure. Only award credentials that are necessary to do a specific task.
+- **Public review** - Do not rely on obscurity to keep your system safe. Assume instead that an attacker knows everything about your system and then make it difficult for anyone to exploit the system. If you can attack your system, then a hacker will be able to also. By soliciting public review and the work of external penetration testers, you will be able to discover and remove potential exploits.
+
+### top 10 most importan web security risks and how to mitigate
+
+1. **Broken Access Control** Broken access control occurs when the application doesn't properly enforce permissions on users. This could mean that a non-admin user can do things that only an admin should be able to do, or admin accounts are improperly secured. While browser application code can restrict access by disabling UI for navigating to sensitive functionality, the ultimate responsibility for enforcing access control rests upon the application service.
+
+As an example of broken access control, consider an application where the UI only provides a navigation to the administrator application settings if the user is an administrator. However, the attacker can simply change the URL to point to the application settings URL and gain access. Additionally, unless the service endpoints reject requests to obtain, and update, the application settings, any restrictions that the UI provides are meaningless.
+
+- Mitigations include:
+
+        1. Strict access enforcement at the service level
+        2. Clearly defined roles and elevation paths
+
+2. **Cryptographic failures** Cryptographic failures occur when sensitive data is accessible either without encryption, with weak encryption protocols, or when cryptographic protections are ignored.
+
+Sending any unencrypted data over a public network connection allows an attacker to capture the data. Even private, internal, network connections, or data that is store without encryption, is susceptibly to exploitation once an attacker gains access to the internal system.
+
+Examples of ineffective cryptographic methods include hashing algorithms like MD5 and SHA-1 that are trivial to crack with modern hardware and tools.
+
+Another cryptographic failure happens when applications do not validate the provided web certificate when establishing a network connection. This is a case of falsely assuming that if the protocol is secure then the entity represented by the protocol is acceptable.
+
+- Mitigations include:
+
+        1. Use strong encryption for all data. This includes external, internal, in transit, and at rest data.
+        2. Updating encryption algorithms as older algorithms become compromised.
+        3. Properly using cryptographic safeguards.
+
+3. **Injection** Injection exploits occur when an attacker is allowed to supply data that is then injected into a context where it violates the expected use of the user input. For example, consider an input field that is only expected to contain a user's password. Instead the attacker supplies a SQL database command in the password input.
+
+- Mitigations include:
+
+      - Sanitizing input
+      - Use database prepared statements
+      - Restricting execution rights
+      - Limit output
+
+4. **Insecure Design** Insecure design broadly refers to architectural flaws that are unique for individual systems, rather than implementation errors. This happens when the application team doesn't focus on security when designing a system, or doesn't continuously reevaluate the application's security.
+
+Insecure design exploits are based upon unexpected uses of the business logic that controls the functionality of the application. For example, if the application allows for trial accounts to be easily created, then an attacker could create a denial of service attack by creating millions of accounts and utilizing the maximum allowable usage.
+
+- Mitigations include:
+
+      - Integration testing
+      - Strict access control
+
+  - Security education
+  - Security design pattern usages
+  - Scenario reviews
+
+5. **Security misconfiguration** Security misconfiguration attacks exploit the configuration of an application. Some examples include using default passwords, not updating software, exposing configuration settings, or enabling unsecured remote configuration.
+
+For example, some third party utilities, such as a logging system, will expose a public administration interface that has a default user name and password. Unless that configuration is changed, an attacker will be able to access all of the critical logging information for your application.
+
+- Mitigations include:
+
+      - Configuration reviews
+      - Setting defaults to disable all access
+      - Automated configuration audits
+      - Requiring multiple layers of access for remote configuration
+
+6. **Vulnerable and outdated components** The longer an application has been deployed, the more likely it is that the attack surface, and corresponding exploits, of the application will increase. This is primarily due to the cost of maintaining an application and keeping it up to date in order to mitigate newly discovered exploits.
+
+Outdated components often accumulate as third party packages are used by the application. Over time the packages are updated in order to address security concerns, or somethings the packages stop being supported. When this happens your application becomes vulnerable.
+
+The application developer is warned that the components are vulnerable, but when faced choice of taking the time to update packages, and potentially break the application, or meeting deliverable deadlines, the developer is tempted to ignore the warning and continue without addressing the possible problem.
+
+- Mitigations include:
+
+      - Keeping a manifest of your software stack including versions
+      - Reviewing security bulletins
+      - Regularly updating software
+      - Required components to be up to date
+      - Replacing unsupported software
+
+7. **Identification and authentication failures** Identification and authentication failures include any situation where a user's identity can be impersonated or assumed by an attacker. For example, if an attacker can repeatedly attempt to guess a user's password, then eventually they will be successful. Additionally, if passwords are exposed outside of the application, or are stored inside the application, with weak cryptographic protection, then they are susceptible to attack.
+
+Another example of an identification failure would be a weak password recovery process that doesn't properly verify the user. Common practices such as asking for well known security questions (e.g. mother's maiden name) from a user fall into this category.
+
+- Mitigations include:
+
+      - Rate limiting requests
+      - Properly managing credentials
+      - Multifactor authentication
+      - Authentication recovery
+
+8. **Software and data integrity failure**Software and data integrity failures represent attacks that allow external software, processes, or data to compromise your application. Modern web applications extensively use open source and commercially produced packages to provide key functionality. Using these packages without conducting a security audit, gives them an unknown amount of control over your application. Likewise, using a third party processing workflow, or blindly accessing external data, opens you up to attacks.
+
+Consider the use of a third party continuous delivery (CD) pipeline for deploying your application to a cloud provider. If the CD provider is penetrated by an attacker then they also gain access to your production cloud environment.
+
+Another example is the use of an NPM package that is controlled by an attacker. Once the package has gained general acceptance, the attacker can subtly change the package to capture and deliver sensitive information.
+
+- Mitigations include:
+
+      - Only using trusted package repositories
+      - Using your own private vetted repository
+      - Audit all updates to third party packages and data sources
+
+9. **Security logging and monitoring failures** Proper system monitoring, logging, and alerting is critical to increasing security. One of the first things an attacker will do after penetrating your application is delete or alter any logs that might reveal the attacker's presence. A secure system will store logs that are accessible, immutable, and contain adequate information to detect an intrusion, and conduct post-mortem analysis.
+
+An attacker might also try to create a smoke screen in the monitoring system in order to hide a true attack. This might consist of a barrage of periodic ineffective attacks that hide the insertion of a slightly different effective one.
+
+- Mitigations include:
+
+      - Real time log processing
+      - Automated alerts for metric threshold violations
+      - Periodic log reviews
+      - Visual dashboards for key indicators
+
+10. **Server side request forgery (SSRF)** This category of attack causes the application service to make unintended internal requests, that utilized the service's elevated privileges, in order to expose internal data or services.
+
+For example, if your service exposed an endpoint that let a user retrieve an external profile image based upon a supplied URL, an attacker could change the URL to point to a location that is normally only available to the service internally.
+
+- Mitigations
+  - Sanitizing returned data
+  - Not returning data
+  - Whitelisting accessible domains
+  - Rejecting HTTP redirects
+
+## React
+
+React abstracts HTML into a JavaScript variant called JSX. JSX is converted into valid HTML and JavaScript using a preprocessor called Babel. For example, the following is a JSX file. Notice that it mixes both HTML and JavaScript into a single representation.
+
+### Key Concepts
+
+#### 1. Components:
+
+- **Building Blocks:** React applications are built using components, which are like custom HTML elements that encapsulate their own behavior and appearance.
+- **Reusability:** Components can be reused throughout the application, making it easy to maintain and scale.
+
+- Render fucntion: whatever is returned from the render fucntion is inserted into the component HTML element
+
+#### 2. JSX (JavaScript XML):
+
+- **HTML in JavaScript:** JSX is a syntax extension for JavaScript that allows you to write HTML-like code directly within your JavaScript code.
+- **Component Rendering:** JSX is used to define the structure and appearance of React components.
+
+#### 3. Virtual DOM (Document Object Model):
+
+- **Efficient Updates:** React uses a virtual DOM to represent the UI. Changes to the virtual DOM are efficiently batched and then applied to the real DOM, resulting in improved performance.
+- **Reconciliation:** React automatically reconciles the virtual DOM with the real DOM, ensuring that only the necessary updates are made.
+
+#### 4. State and Props:
+
+- **State:** Represents the internal data of a component. Changes to the state trigger re-rendering of the component.
+- **Props (Properties):** Allow data to be passed from parent components to child components. Props are immutable and help create dynamic and flexible components.
+
+#### Hooks
+
+- React.useState hook function: returns a variable that contains the current state and a fucntion to update the state.
+- useEffect hook function: allows you to represent lifecycle events.
+
+### Getting Started:
+
+#### 1. Installation:
+
+- You can start a new React project using Create React App, a toolchain for creating React applications with no build configuration needed.
+
+#### 2. Component Creation:
+
+- Define your React components using JavaScript classes or functional components.
+- Use JSX syntax to define the structure and appearance of your components.
+
+#### 3. Rendering Components:
+
+- Use ReactDOM.render() to render your top-level component into the DOM.
+- Components can be nested within each other to create complex UIs.
+
+### Example:
+
+```jsx
+import React, { useState } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+
+  return (
+    <div>
+      <h1>Counter</h1>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+};
+
+export default Counter;
 ```
-SOP  - you can only call to your origin
-CORS
-- Cross origin resource sharing configuring to allow
+
+```
+
 ```
