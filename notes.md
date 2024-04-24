@@ -911,10 +911,25 @@ provides support for:
 
 #### Daemon
 
-- The term daemon comes from the idea of something that is always there working in the background.
+- In order to keep programs running after a shutdown you need to register it as a daemon. The term daemon comes from the idea of something that is always there working in the background. Hopefully you only have good daemons running in your background.
 - PM2
 
 - A computing device that is hosting a web service that knows how to accept incoming internet connections and speak the http protocol
+
+##### Key characteristics of Linux daemons include:
+
+1. Background Process: Daemons operate in the background, meaning they do not require user interaction or a graphical interface to function. They typically run as system processes without any visible user interface.
+2. Autostart: Daemons are often configured to start automatically when the system boots up. This ensures that the services they provide are available as soon as the system becomes operational.
+3. Long-Running: Daemons are designed to run continuously, monitoring system events, responding to requests, or performing scheduled tasks as required. They are not terminated when a user logs out of the system.
+4. System Services: Daemons provide various system-level services, such as network services (e.g., web servers, FTP servers), system monitoring (e.g., logging daemons), and hardware management (e.g., device drivers).
+
+###### Examples of common Linux daemons include:
+
+- sshd: The SSH daemon provides secure shell access to the system for remote administration and file transfer.
+- httpd: The HTTP daemon is responsible for serving web pages and content over the HTTP protocol, typically using a web server like Apache or Nginx.
+- cron: The cron daemon is responsible for executing scheduled tasks or commands at specified intervals.
+
+- You can now access your subdomain in the browser and see the proper response. PM2 will keep running your service even after you exit your SSH session.
 
 #### Key Components of a Web Server:
 
@@ -1278,6 +1293,30 @@ React abstracts HTML into a JavaScript variant called JSX. JSX is converted into
 
 - **HTML in JavaScript:** JSX is a syntax extension for JavaScript that allows you to write HTML-like code directly within your JavaScript code.
 - **Component Rendering:** JSX is used to define the structure and appearance of React components.
+
+##### Purposes of JSX
+
+NOT to combine CSS, HTML and Javascript
+
+###### 1. Declarative Syntax
+
+JSX provides a declarative syntax for defining the structure and appearance of UI components. Instead of manually manipulating the DOM with imperative JavaScript, developers can use JSX to describe what the UI should look like in a more intuitive and HTML-like manner.
+
+###### 2. Component Composition
+
+JSX enables the creation and composition of reusable components. Components can be nested within each other, allowing developers to build complex UIs by combining smaller, modular pieces.
+
+###### 3. Embedding Expressions
+
+JSX allows embedding JavaScript expressions within curly braces `{}` directly within the markup. This enables dynamic content rendering and data binding, as values can be interpolated directly into the JSX code.
+
+###### 4. Readability and Maintainability
+
+JSX improves the readability and maintainability of React code by closely resembling HTML markup. Developers, especially those familiar with HTML, find JSX easier to understand and work with compared to alternative templating languages.
+
+###### 5. Tooling Support
+
+JSX is supported by various development tools and libraries, including code editors, syntax highlighters, and static analysis tools. This ecosystem support enhances developer productivity and facilitates the development of React applications.
 
 #### 3. Virtual DOM (Document Object Model):
 
